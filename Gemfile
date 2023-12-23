@@ -65,3 +65,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'wikipedia-client'
+
+gem 'pg_search'
+
+
