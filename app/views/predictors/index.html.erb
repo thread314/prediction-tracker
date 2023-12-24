@@ -1,8 +1,16 @@
 <h1>Predictors#index</h1>
-<% @predictors.each do |p| %>
 
 <p>
-<%= p.title %>
+  <%= form_with url: "/predictors", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+  <% end %>
+</p>
+
+<% @predictors.each do |p| %>
+<p>
+  <%= p.title %>
 </p>
 <% end %>
 

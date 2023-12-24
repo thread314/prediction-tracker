@@ -1,5 +1,11 @@
 class PredictorsController < ApplicationController
+
   def index
-    @predictors = Predictor.all
+    if params[:query] 
+      @predictors = Predictor.search(params[:query])
+    else
+      @predictors = Predictor.all
+    end
   end
+
 end
