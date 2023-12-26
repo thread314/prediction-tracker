@@ -1,0 +1,14 @@
+<h1>Predictors#new</h1>
+
+<p>
+Enter the URL for the individual's Wikipedia page below:
+</p>
+
+<p>
+
+<%= form_with model: @predictor do |form| %>
+  <%= form.text_field :wikiurl %>
+  <%= form.submit %>
+<% end %>
+
+</p>
