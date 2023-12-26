@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Predictions</h1>
+
+<div id="predictions">
+  <% @predictions.each do |prediction| %>
+    <%= render prediction %>
+    <p>
+      <%= link_to "Show this prediction", prediction %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New prediction", new_prediction_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: @prediction) do |form| %>
+  <% if prediction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(prediction.errors.count, "error") %> prohibited this prediction from being saved:</h2>
+
+      <ul>
+        <% prediction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :title, style: "display: block", class: "label" %>
+  <%= form.text_area :title, class: "input" %>
+  <br>
+  <%= form.label :body, style: "display: block", class: "label" %>
+  <%= form.text_area :body, class: "input" %>
+  <br>
+  <%= form.label :duedate, style: "display: block", class: "label" %>
+  <%= form.date_field :duedate, class: "input" %>
+  <%= form.hidden_field :predictor_id, value: params[:predictor_id] %>
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

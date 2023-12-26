@@ -4,5 +4,6 @@ class Predictor < ApplicationRecord
   pg_search_scope :search,
                   against: :title,
                   using: {tsearch: { prefix: true }}
+  has_many :predictions
 
 end
