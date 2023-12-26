@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   root "predictors#index"
   get "/predictors", to: "predictors#index"
   get "/predictors/new", to: "predictors#new"
-  post "/predictors/new", to: "predictors#create"
-  post "/predictors/new", to: "predictors#create"
-  get "/predictors/:id", to: "predictors#show"
+  get "/predictors/confirm", to: "predictors#confirm"
+  post "/predictors", to: "predictors#create"
+  get "/predictors/:id", to: "predictors#show", as: "predictor"
+
 
 end

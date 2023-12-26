@@ -1,0 +1,17 @@
+
+<% if @predictor %>
+<%= @predictor.title %>
+<%= render 'show', item: @predictor %>
+
+<%= form_with model: @predictor do |form| %>
+  <%= form.hidden_field :wikiurl, value: @predictor.wikiurl %>
+  <%= form.submit %>
+<% end %>
+
+<% else %>
+No matching entry found.
+<br>
+<% end %>
+
+<%= link_to 'Cancel/Back', root_path %>
+

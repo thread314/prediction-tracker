@@ -14,7 +14,7 @@
 
 <% @predictors.each do |p| %>
 <p>
-  <%= p.title %>
+  <%= link_to p.title, predictor_path(p) %><br>
 </p>
 <% end %>
 

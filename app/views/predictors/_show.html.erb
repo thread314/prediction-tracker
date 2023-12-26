@@ -1,0 +1,12 @@
+<h1>
+  <%= link_to @predictor.title, @predictor.wikiurl %>
+</h1>
+
+<p>
+  <%= image_tag @predictor.image, height:150 if @predictor.image %>
+</p>
+
+<p>
+  <%= @predictor.summary[0,300] + "..." if @predictor.summary %>
+</p>
+

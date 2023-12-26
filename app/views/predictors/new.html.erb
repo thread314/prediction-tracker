@@ -4,11 +4,12 @@
 Enter the URL for the individual's Wikipedia page below:
 </p>
 
-<p>
+<br>
 
-<%= form_with model: @predictor do |form| %>
-  <%= form.text_field :wikiurl %>
-  <%= form.submit %>
+<%= form_with url: "/predictors/confirm", method: :get do |form| %>
+<%= form.label :query, "Wikipedia URL: " %>
+<%= form.text_field :query %>
+<%= form.submit "Search" %>
 <% end %>
 
-</p>
+<br>
