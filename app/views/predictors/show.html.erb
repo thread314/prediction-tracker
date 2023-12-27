@@ -3,3 +3,12 @@
 
  <%= link_to 'New Prediction', new_prediction_path(predictor_id: @predictor.id) %>
 
+
+<div id="predictions">
+  <% @predictions.each do |prediction| %>
+    <p>
+      <%= link_to prediction.title, prediction %>
+    </p>
+  <% end %>
+</div>
+

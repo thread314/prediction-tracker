@@ -4,11 +4,9 @@
 
 <div id="predictions">
   <% @predictions.each do |prediction| %>
-    <%= render prediction %>
     <p>
-      <%= link_to "Show this prediction", prediction %>
+      <%= link_to prediction.title, prediction %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New prediction", new_prediction_path %>

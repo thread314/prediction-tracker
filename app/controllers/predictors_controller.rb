@@ -10,6 +10,7 @@ class PredictorsController < ApplicationController
 
   def show
     @predictor = Predictor.find(params[:id])
+    @predictions = Prediction.where(predictor_id: params[:id])
   end
 
   def new
