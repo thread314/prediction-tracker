@@ -8,6 +8,7 @@ class PredictionsController < ApplicationController
 
   # GET /predictions/1 or /predictions/1.json
   def show
+    @outcomes = Outcome.where(prediction_id: params[:id])
   end
 
   # GET /predictions/new
