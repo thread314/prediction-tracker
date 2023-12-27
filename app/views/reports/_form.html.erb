@@ -12,8 +12,10 @@
   <% end %>
 
   <div>
-    <%= form.label :reason, style: "display: block" %>
-    <%= form.number_field :reason %>
+    <!-- <%= form.label :reason, style: "display: block" %> -->
+    <!-- <%= form.number_field :reason %> -->
+
+    <%= form.select :reason, Report.reasons.keys.map { |reason| [reason.titleize, reason] }, { prompt: 'Select a Reason' } %>
   </div>
 
   <div>
@@ -22,8 +24,10 @@
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
+    <%= form.hidden_field :status, value: "Pending" %>
+
+    <%= form.hidden_field :reportable_id, value: @reportable_id %>
+    <%= form.hidden_field :reportable_type, value: @reportable_type %>
   </div>
 
   <div>

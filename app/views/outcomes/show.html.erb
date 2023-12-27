@@ -2,6 +2,9 @@
 
 <%= render @outcome %>
 
+<p>
+<%= link_to 'Lodge a report', new_report_path(outcome_id: @outcome.id) %>
+</p>
 <div>
   <%= link_to "Edit this outcome", edit_outcome_path(@outcome) %> |
   <%= link_to "Back to outcomes", outcomes_path %>

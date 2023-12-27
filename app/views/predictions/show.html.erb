@@ -9,6 +9,8 @@
   <%= button_to "Destroy this prediction", @prediction, method: :delete %>
 </div>
 
+<%= link_to 'Lodge a report', new_report_path(prediction_id: @prediction.id) %>
+<br>
 <%= link_to 'Lodge an outcome for this prediction', new_outcome_path(prediction_id: @prediction.id) %>
 
 <% @outcomes.each do |outcome| %>
@@ -18,6 +20,8 @@
   <%= outcome.result %>
   <br>
   <%= outcome.body %>
+  <br>
+  <%= link_to "View Outcome", outcome %>
   <br>
   <hr>
 </p>

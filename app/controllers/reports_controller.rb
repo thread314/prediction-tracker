@@ -12,7 +12,17 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
+
+    if params[:prediction_id]
+      @reportable_id = params[:prediction_id]
+      @reportable_type = "Prediction"
+    elsif params[:outcome_id]
+      @reportable_id = params[:outcome_id]
+      @reportable_type = "Outcome"
+    end
+
     @report = Report.new
+
   end
 
   # GET /reports/1/edit
@@ -65,6 +75,6 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.require(:report).permit(:reason, :body, :status)
+      params.require(:report).permit(:reason, :body, :status, :reportable_id, :reportable_type)
     end
 end
