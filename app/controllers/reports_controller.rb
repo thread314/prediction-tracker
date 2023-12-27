@@ -16,9 +16,11 @@ class ReportsController < ApplicationController
     if params[:prediction_id]
       @reportable_id = params[:prediction_id]
       @reportable_type = "Prediction"
+      @reason_list = Report.reasons.keys.map { |reason| [reason.titleize, reason] }
     elsif params[:outcome_id]
       @reportable_id = params[:outcome_id]
       @reportable_type = "Outcome"
+      @reason_list = Report.reasons.keys.drop(5).map { |reason| [reason.titleize, reason] }
     end
 
     @report = Report.new

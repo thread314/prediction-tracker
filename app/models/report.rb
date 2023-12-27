@@ -1,15 +1,14 @@
 class Report < ApplicationRecord
 
-  enum reason: {"Misleading/inaccurate" => 0,
-                "Replacement link" => 1,
-                "Offensive content" => 2,
-                "Other" => 3,
-                "Not directly quoted" => 4,
-                "Not objectively measurable" => 5,
-                "No objective time frame" => 6,
-                "No original source/citation" => 7,
-                "Wrong predictor" => 8,
-                "Duplicate" => 9}
+  enum reason: {"Not directly quoted" => 0,
+                "Not objectively measurable" => 1,
+                "No objective time frame" => 2,
+                "No original source/citation" => 3,
+                "Duplicate" => 4,
+                "Misleading/inaccurate" => 5,
+                "Replacement link" => 6,
+                "Offensive content" => 7,
+                "Other" => 8}
 
   enum status: {"Pending" => 0,
                 "Upheld" => 1,

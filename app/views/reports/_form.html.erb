@@ -15,7 +15,7 @@
     <!-- <%= form.label :reason, style: "display: block" %> -->
     <!-- <%= form.number_field :reason %> -->
 
-    <%= form.select :reason, Report.reasons.keys.map { |reason| [reason.titleize, reason] }, { prompt: 'Select a Reason' } %>
+    <%= form.select :reason, @reason_list, { prompt: 'Select a Reason' } %>
   </div>
 
   <div>
