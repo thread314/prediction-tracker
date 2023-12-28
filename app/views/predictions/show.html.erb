@@ -5,14 +5,30 @@
 <div>
   <%= link_to "Edit this prediction", edit_prediction_path(@prediction) %> |
   <%= link_to "Back to predictions", predictions_path %>
-
   <%= button_to "Destroy this prediction", @prediction, method: :delete %>
 </div>
 
+<hr>
+<h3>Comments</h3>
+
+<% @comments.each do |comment| %>
+<p>
+  <%= comment.created_at %>
+  <br>
+  <%= comment.body %>
+  <br>
+  <hr>
+</p>
+<% end %>
+
+<%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
+
+<hr>
 <%= link_to 'Lodge a report', new_report_path(prediction_id: @prediction.id) %>
 <br>
-<%= link_to 'Lodge an outcome for this prediction', new_outcome_path(prediction_id: @prediction.id) %>
 
+<hr>
+<h3>Outcomes</h3>
 <% @outcomes.each do |outcome| %>
 <p>
   <%= outcome.created_at %>
@@ -26,4 +42,11 @@
   <hr>
 </p>
 <% end %>
+
+<%= link_to 'Lodge an outcome for this prediction', new_outcome_path(prediction_id: @prediction.id) %>
+
+<h2>
+
+</h2>
+  
 

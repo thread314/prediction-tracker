@@ -8,6 +8,8 @@ class OutcomesController < ApplicationController
 
   # GET /outcomes/1 or /outcomes/1.json
   def show
+    @outcome = Outcome.find(params[:id])
+    @comments = @outcome.comments
   end
 
   # GET /outcomes/new

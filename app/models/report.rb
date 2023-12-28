@@ -13,6 +13,8 @@ class Report < ApplicationRecord
   enum status: {"Pending" => 0,
                 "Upheld" => 1,
                 "Dismissed" => 2}
+  
   belongs_to :reportable, polymorphic: true
+  has_many :comments, as: :commentable
 
 end

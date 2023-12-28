@@ -8,3 +8,17 @@
 
   <%= button_to "Destroy this report", @report, method: :delete %>
 </div>
+
+<h3>Comments</h3>
+
+<% @comments.each do |comment| %>
+<p>
+  <%= comment.created_at %>
+  <br>
+  <%= comment.body %>
+  <br>
+  <hr>
+</p>
+<% end %>
+
+<%= link_to 'Add New Comment', new_report_comment_path(@report) %>
