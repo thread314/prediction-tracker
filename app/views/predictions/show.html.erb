@@ -24,7 +24,7 @@
 <%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
 
 <hr>
-<%= link_to 'Lodge a report', new_report_path(prediction_id: @prediction.id) %>
+<%= link_to 'Lodge a report', new_prediction_report_path(@prediction) %>
 <br>
 
 <hr>
@@ -43,7 +43,7 @@
 </p>
 <% end %>
 
-<%= link_to 'Lodge an outcome for this prediction', new_outcome_path(prediction_id: @prediction.id) %>
+<%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>
 
 <h2>
 

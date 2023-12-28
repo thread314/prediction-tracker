@@ -14,19 +14,15 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-
     if params[:prediction_id]
-      @reportable_id = params[:prediction_id]
-      @reportable_type = "Prediction"
+      @prediction = Prediction.find(params[:prediction_id])
+      @report = @prediction.reports.create
       @reason_list = Report.reasons.keys.map { |reason| [reason.titleize, reason] }
     elsif params[:outcome_id]
-      @reportable_id = params[:outcome_id]
-      @reportable_type = "Outcome"
+      @outcome = Outcome.find(params[:outcome_id])
+      @report = @outcome.reports.create
       @reason_list = Report.reasons.keys.drop(5).map { |reason| [reason.titleize, reason] }
     end
-
-    @report = Report.new
-
   end
 
   # GET /reports/1/edit

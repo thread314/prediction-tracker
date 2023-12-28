@@ -14,7 +14,8 @@ class OutcomesController < ApplicationController
 
   # GET /outcomes/new
   def new
-    @outcome = Outcome.new
+    @predictor = Prediction.find(params[:prediction_id])
+    @outcome = @predictor.outcomes.create
   end
 
   # GET /outcomes/1/edit

@@ -3,7 +3,7 @@
 <%= render @outcome %>
 
 <p>
-<%= link_to 'Lodge a report', new_report_path(outcome_id: @outcome.id) %>
+  <%= link_to 'Lodge a report', new_outcome_report_path(@outcome) %>
 </p>
 <div>
   <%= link_to "Edit this outcome", edit_outcome_path(@outcome) %> |
@@ -12,16 +12,14 @@
   <%= button_to "Destroy this outcome", @outcome, method: :delete %>
 </div>
 
-
 <h3>Comments</h3>
 
 <% @comments.each do |comment| %>
 <p>
+  <hr>
   <%= comment.created_at %>
   <br>
   <%= comment.body %>
-  <br>
-  <hr>
 </p>
 <% end %>
 

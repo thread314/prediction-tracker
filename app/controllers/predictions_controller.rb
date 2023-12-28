@@ -15,7 +15,8 @@ class PredictionsController < ApplicationController
 
   # GET /predictions/new
   def new
-    @prediction = Prediction.new
+    @predictor = Predictor.find(params[:format])
+    @prediction = @predictor.predictions.create
   end
 
   # GET /predictions/1/edit

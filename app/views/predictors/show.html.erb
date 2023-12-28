@@ -1,15 +1,14 @@
 
- <%= render 'show', item: @predictor %>
+<%= render 'show', item: @predictor %>
 
- <%= link_to 'New Prediction', new_prediction_path(predictor_id: @predictor.id) %>
-
+<%= link_to 'New Prediction', new_predictors_prediction_path(@predictor) %>
 
 <div id="predictions">
   <% @predictions.each do |prediction| %>
-    <p>
-      <%= link_to prediction.title, prediction %>
-      <hr>
-    </p>
+  <p>
+    <%= link_to prediction.title, prediction %>
+    <hr>
+  </p>
   <% end %>
 </div>
 

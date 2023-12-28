@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-
     if params[:prediction_id]
       @prediction = Prediction.find(params[:prediction_id])
       @comment = @prediction.comments.create
@@ -23,7 +22,6 @@ class CommentsController < ApplicationController
       @report = Report.find(params[:report_id])
       @comment = @report.comments.create
     end
-
   end
 
   # GET /comments/1/edit
