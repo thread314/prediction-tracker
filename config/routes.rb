@@ -4,31 +4,31 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "predictors#index"
-  get "/predictors", to: "predictors#index"
-  get "/predictors/new", to: "predictors#new"
-  post "/predictors", to: "predictors#create"
+  # get "/predictors", to: "predictors#index"
+  # get "/predictors/new", to: "predictors#new"
+  # post "/predictors", to: "predictors#create"
 
   resource :predictors do
-  # resource :predictors, only: [:index, :new, :create] do
-    resources :predictions
+    resources :predictions, only: [:index, :new, :create]
   end
 
   get "/predictors/confirm", to: "predictors#confirm"
   get "/predictors/:id", to: "predictors#show", as: "predictor"
 
-  resources :predictions, shallow: true do
-    resources :comments
-    resources :outcomes
-    resources :reports
+  # resources :predictions, only: [:index, :show, :edit, :update, :destroy], shallow: true do
+  resources :predictions, only: [:index, :show, :edit, :update, :destroy] do
+    resources :outcomes, only: [:index, :new, :create]
+    resources :reports, only: [:index, :new, :create]
+    resources :comments, only: [:index, :new, :create]
   end
 
-  resources :outcomes, shallow: true do
-    resources :comments
-    resources :reports
+  resources :outcomes, only: [:index, :show, :edit, :update, :destroy] do
+    resources :comments, only: [:index, :new, :create]
+    resources :reports, only: [:index, :new, :create]
   end
 
-  resources :reports, shallow: true do
-    resources :comments
+  resources :reports, only: [:show, :edit, :update, :destroy] do
+    resources :comments, only: [:index, :new, :create]
   end
 
   resources :comments

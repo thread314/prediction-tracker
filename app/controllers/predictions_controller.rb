@@ -3,12 +3,18 @@ class PredictionsController < ApplicationController
 
   # GET /predictions or /predictions.json
   def index
-    @predictions = Prediction.all
+    if params[:format]
+      @predictor = Predictor.find(params[:format])
+      @predictions = @predictor.predictions
+    else
+      @predictions = Prediction.all
+    end
   end
 
   # GET /predictions/1 or /predictions/1.json
   def show
     @prediction = Prediction.find(params[:id])
+    @predictor = @prediction.predictor
     @outcomes = @prediction.outcomes
     @comments = @prediction.comments
   end

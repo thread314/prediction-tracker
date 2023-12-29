@@ -13,7 +13,6 @@
 
   <div>
     <%= form.select :result, Outcome.results.keys.map { |result| [result.titleize, result] }, { prompt: 'Select a Result' } %>
-
   </div>
 
   <div>

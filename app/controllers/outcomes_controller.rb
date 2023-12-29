@@ -25,10 +25,11 @@ class OutcomesController < ApplicationController
   # POST /outcomes or /outcomes.json
   def create
     @outcome = Outcome.new(outcome_params)
+    @prediction = Prediction.find(outcome_params[:prediction_id])
 
     respond_to do |format|
       if @outcome.save
-        format.html { redirect_to outcome_url(@outcome), notice: "Outcome was successfully created." }
+        format.html { redirect_to prediction_url(@prediction), notice: "Outcome was successfully created." }
         format.json { render :show, status: :created, location: @outcome }
       else
         format.html { render :new, status: :unprocessable_entity }

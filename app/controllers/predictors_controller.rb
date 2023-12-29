@@ -35,7 +35,7 @@ class PredictorsController < ApplicationController
                                  image: wikientry.main_image_url,
                                  summary: wikientry.summary
       @predictor.save
-      redirect_to root_path, notice: "Predictor Created Successfully"
+      redirect_to predictor_url(@predictor), notice: "Predictor Created Successfully"
     else
       redirect_to root_path, notice: "Predictor Not Found: Incorrect URL"
     end
