@@ -14,8 +14,8 @@ class OutcomesController < ApplicationController
 
   # GET /outcomes/new
   def new
-    @predictor = Prediction.find(params[:prediction_id])
-    @outcome = @predictor.outcomes.create
+    @prediction = Prediction.find(params[:prediction_id])
+    @outcome = @prediction.outcomes.build
   end
 
   # GET /outcomes/1/edit
@@ -24,12 +24,12 @@ class OutcomesController < ApplicationController
 
   # POST /outcomes or /outcomes.json
   def create
-    @outcome = Outcome.new(outcome_params)
-    @prediction = Prediction.find(outcome_params[:prediction_id])
+    @prediction = Prediction.find(params[:prediction_id])
+    @outcome = @prediction.outcomes.build(outcome_params)
 
     respond_to do |format|
       if @outcome.save
-        format.html { redirect_to prediction_url(@prediction), notice: "Outcome was successfully created." }
+        format.html { redirect_to prediction_path(@prediction), notice: "Outcome was successfully created." }
         format.json { render :show, status: :created, location: @outcome }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class OutcomesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def outcome_params
-      params.require(:outcome).permit(:result, :body, :prediction_id)
+      params.require(:outcome).permit(:reason, :body, :status)
     end
 end

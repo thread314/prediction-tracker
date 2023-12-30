@@ -1,5 +1,5 @@
 class PredictionsController < ApplicationController
-  before_action :set_prediction, only: %i[ show edit update destroy ]
+  # before_action :set_prediction, only: %i[ show edit update destroy ]
 
   # GET /predictions or /predictions.json
   def index
@@ -70,9 +70,9 @@ class PredictionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_prediction
-      @prediction = Prediction.find(params[:id])
-    end
+    # def set_prediction
+    #   @prediction = Prediction.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def prediction_params

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   end
 
   get "/predictors/confirm", to: "predictors#confirm"
-  # get "/predictors/:id", to: "predictors#show", as: "predictor"
 
   resources :predictions, only: [:index, :show, :edit, :update, :destroy] do
     resources :outcomes, only: [:index, :new, :create]

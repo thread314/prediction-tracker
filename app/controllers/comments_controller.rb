@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_commentable
 
   # GET /comments or /comments.json
   def index
@@ -12,16 +13,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    if params[:prediction_id]
-      @prediction = Prediction.find(params[:prediction_id])
-      @comment = @prediction.comments.create
-    elsif params[:outcome_id]
-      @outcome = Outcome.find(params[:outcome_id])
-      @comment = @outcome.comments.create
-    elsif params[:report_id]
-      @report = Report.find(params[:report_id])
-      @comment = @report.comments.create
-    end
+    @comment = @commentable.comments.build
   end
 
   # GET /comments/1/edit
@@ -31,7 +23,8 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
 
-    @comment = Comment.new(comment_params)
+    @comment = @commentable.comments.build(comment_params)
+
     if params[:prediction_id]
       @prediction = Prediction.find(params[:prediction_id])
     elsif params[:outcome_id]
@@ -43,10 +36,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save && params[:prediction_id]
         format.html { redirect_to prediction_url(@prediction), notice: "Comment was successfully created." }
-        eslif @comment.save && params[:outcome_id]
+      elsif @comment.save && params[:outcome_id]
         format.html { redirect_to outcome_url(@outcome), notice: "Comment was successfully created." }
-        eslif @comment.save && params[:report_id]
-        format.html { redirect_to report_url(@report), notice: "Comment was successfully created." }
+      elsif @comment.save && params[:report_id]
+          format.html { redirect_to report_url(@report), notice: "Comment was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity, notice: "Error saving" }
       end
@@ -83,6 +76,12 @@ class CommentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def comment_params
     params.require(:comment).permit(:body, :commentable_type, :commentable_id)
+  end
+
+  def set_commentable
+    @commentable = Prediction.find(params[:prediction_id]) if params[:prediction_id]
+    @commentable = Outcome.find(params[:outcome_id]) if params[:outcome_id]
+    @commentable = Report.find(params[:report_id]) if params[:report_id]
   end
 
 end
