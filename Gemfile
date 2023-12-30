@@ -71,3 +71,5 @@ gem 'wikipedia-client'
 gem 'pg_search'
 
 
+
+gem "devise", "~> 4.9"
