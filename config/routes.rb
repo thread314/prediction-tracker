@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   root "predictors#index"
 
-  resource :predictors do
+  resources :predictors do
     resources :predictions, only: [:index, :new, :create]
   end
 
   get "/predictors/confirm", to: "predictors#confirm"
-  get "/predictors/:id", to: "predictors#show", as: "predictor"
+  # get "/predictors/:id", to: "predictors#show", as: "predictor"
 
   resources :predictions, only: [:index, :show, :edit, :update, :destroy] do
     resources :outcomes, only: [:index, :new, :create]

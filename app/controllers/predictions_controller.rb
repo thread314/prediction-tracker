@@ -3,8 +3,8 @@ class PredictionsController < ApplicationController
 
   # GET /predictions or /predictions.json
   def index
-    if params[:format]
-      @predictor = Predictor.find(params[:format])
+    if params[:predictor_id]
+      @predictor = Predictor.find(params[:predictor_id])
       @predictions = @predictor.predictions
     else
       @predictions = Prediction.all
@@ -21,8 +21,8 @@ class PredictionsController < ApplicationController
 
   # GET /predictions/new
   def new
-    @predictor = Predictor.find(params[:format])
-    @prediction = @predictor.predictions.create
+    @predictor = Predictor.find(params[:predictor_id])
+    @prediction = @predictor.predictions.build
   end
 
   # GET /predictions/1/edit
@@ -31,11 +31,12 @@ class PredictionsController < ApplicationController
 
   # POST /predictions or /predictions.json
   def create
-    @prediction = Prediction.new(prediction_params)
-
+    @predictor = Predictor.find(params[:predictor_id])
+    @prediction = @predictor.predictions.build(prediction_params)
     respond_to do |format|
       if @prediction.save
-        format.html { redirect_to prediction_url(@prediction), notice: "Prediction was successfully created." }
+        format.html { redirect_to prediction_path(@prediction), notice: "Prediction was successfully created." }
+        # format.html { redirect_to root_path, notice: "Prediction was successfully created." }
         format.json { render :show, status: :created, location: @prediction }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +49,7 @@ class PredictionsController < ApplicationController
   def update
     respond_to do |format|
       if @prediction.update(prediction_params)
-        format.html { redirect_to prediction_url(@prediction), notice: "Prediction was successfully updated." }
+        format.html { redirect_to prediction_path(@prediction), notice: "Prediction was successfully updated." }
         format.json { render :show, status: :ok, location: @prediction }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -75,7 +76,7 @@ class PredictionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def prediction_params
-      params.require(:prediction).permit(:title, :body, :duedate, :predictor_id)
+      params.require(:prediction).permit(:title, :body, :duedate)
     end
 
 end

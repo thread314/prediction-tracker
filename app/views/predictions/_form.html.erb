@@ -1,10 +1,10 @@
-<%= form_with(model: @prediction) do |form| %>
-  <% if prediction.errors.any? %>
+<%= form_with(model: [@predictor, @prediction], local: true) do |form| %>
+  <% if @prediction.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(prediction.errors.count, "error") %> prohibited this prediction from being saved:</h2>
+      <h2><%= pluralize(@prediction.errors.count, "error") %> prohibited this prediction from being saved:</h2>
 
       <ul>
-        <% prediction.errors.each do |error| %>
+        <% @prediction.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
