@@ -14,19 +14,20 @@ class PredictorsController < ApplicationController
   end
 
   def new
-  end
-  
-  def confirm
-    wikientry = Wikipedia.find(params[:query])
-    wikiurl = wikientry.fullurl
-    if wikientry.content
+    if params[:query]
+      wikientry = Wikipedia.find(params[:query])
+      wikiurl = wikientry.fullurl
+    end
+    if Predictor.find_by(wikiurl: wikiurl) 
+      @predictor = Predictor.find_by(wikiurl: wikiurl)
+    elsif wikientry 
       @predictor = Predictor.new wikiurl: wikiurl, 
                                  title: wikientry.title,
                                  image: wikientry.main_image_url,
                                  summary: wikientry.summary
     end
   end
-
+  
   def create
     wikientry = Wikipedia.find(params[:predictor]['wikiurl'])
     if wikientry.content

@@ -1,15 +1,32 @@
 <h1>Predictors#new</h1>
 
 <p>
-Enter the URL for the individual's Wikipedia page below:
+  Enter the URL for the individual's Wikipedia page below:
 </p>
 
 <br>
 
-<%= form_with url: "/predictors/confirm", method: :get do |form| %>
+<%= form_with url: "/predictors/new", method: :get do |form| %>
 <%= form.label :query, "Wikipedia URL: " %>
 <%= form.text_field :query %>
 <%= form.submit "Search" %>
 <% end %>
 
+<% if @predictor && @predictor.summary %>
+<h2>Results:</h2>
+<%= @predictor.title %>
+<%= render 'show', item: @predictor %>
+<% end %>
+
+<% if @predictor && @predictor.persisted? && @predictor.summary %>
+<%= link_to "Go to " + @predictor.title, predictor_path(@predictor) %><br>
+<% elsif @predictor %>
+<%= form_with model: @predictor do |form| %>
+<%= form.hidden_field :wikiurl, value: @predictor.wikiurl %>
+<%= form.submit %>
+<% end %>
+<% end %>
+
 <br>
+
+

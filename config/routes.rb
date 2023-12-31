@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     resources :predictions, only: [:index, :new, :create]
   end
 
-  get "/predictors/confirm", to: "predictors#confirm"
-
   resources :predictions, only: [:index, :show, :edit, :update, :destroy] do
     resources :outcomes, only: [:index, :new, :create]
     resources :reports, only: [:index, :new, :create]
@@ -30,3 +28,4 @@ Rails.application.routes.draw do
   resources :comments
 
 end
+

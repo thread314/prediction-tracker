@@ -5,7 +5,7 @@
 </p>
 
 <p>
-  <%= form_with url: "/predictor", method: :get do |form| %>
+  <%= form_with url: "/predictors", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
   <%= form.text_field :query %>
   <%= form.submit "Search" %>
