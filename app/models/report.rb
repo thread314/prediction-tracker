@@ -15,6 +15,6 @@ class Report < ApplicationRecord
                 "Dismissed" => 2}
   
   belongs_to :reportable, polymorphic: true
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :delete_all
 
 end

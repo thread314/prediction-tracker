@@ -6,26 +6,24 @@ Rails.application.routes.draw do
 
   root "predictors#index"
 
-  resources :predictors do
-    resources :predictions, only: [:index, :new, :create]
+  resources :predictors, only: [:index, :show, :new, :create] do
+    resources :predictions, only: [:new, :create]
   end
 
   resources :predictions, only: [:index, :show, :edit, :update, :destroy] do
-    resources :outcomes, only: [:index, :new, :create]
-    resources :reports, only: [:index, :new, :create]
-    resources :comments, only: [:index, :new, :create]
+    resources :outcomes, only: [:new, :create]
+    resources :reports, only: [:new, :create]
+    resources :comments, only: [:new, :create]
   end
 
   resources :outcomes, only: [:index, :show, :edit, :update, :destroy] do
-    resources :comments, only: [:index, :new, :create]
-    resources :reports, only: [:index, :new, :create]
+    resources :comments, only: [:new, :create]
+    resources :reports, only: [:new, :create]
   end
 
-  resources :reports, only: [:show, :edit, :update, :destroy] do
-    resources :comments, only: [:index, :new, :create]
+  resources :reports, only: [:index, :show, :edit, :update, :destroy] do
+    resources :comments, only: [:new, :create]
   end
-
-  resources :comments
 
 end
 

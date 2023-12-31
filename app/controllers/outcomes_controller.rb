@@ -69,6 +69,6 @@ class OutcomesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def outcome_params
-      params.require(:outcome).permit(:reason, :body, :status)
+      params.require(:outcome).permit(:result, :body)
     end
 end

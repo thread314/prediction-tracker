@@ -38,7 +38,7 @@ class PredictorsController < ApplicationController
       @predictor.save
       redirect_to predictor_url(@predictor), notice: "Predictor Created Successfully"
     else
-      redirect_to root_path, notice: "Predictor Not Found: Incorrect URL"
+      redirect_to new_predictor_path, notice: "Predictor Not Found: Incorrect URL"
     end
 
   end
