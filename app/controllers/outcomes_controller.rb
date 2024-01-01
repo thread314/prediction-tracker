@@ -3,7 +3,6 @@ class OutcomesController < ApplicationController
 
   # GET /outcomes/1 or /outcomes/1.json
   def show
-    @outcome = Outcome.find(params[:id])
     @comments = @outcome.comments
   end
 
@@ -35,9 +34,10 @@ class OutcomesController < ApplicationController
 
   # PATCH/PUT /outcomes/1 or /outcomes/1.json
   def update
+    @prediction = @outcome.prediction
     respond_to do |format|
       if @outcome.update(outcome_params)
-        format.html { redirect_to outcome_url(@outcome), notice: "Outcome was successfully updated." }
+        format.html { redirect_to prediction_path(@prediction), notice: "Outcome was successfully updated." }
         format.json { render :show, status: :ok, location: @outcome }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ destroy ]
-  before_action :set_commentable
+  before_action :set_commentable, only: %i[ new create ]
 
   # GET /comments/new
   def new

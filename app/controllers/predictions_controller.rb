@@ -1,5 +1,5 @@
 class PredictionsController < ApplicationController
-  # before_action :set_prediction, only: %i[ show edit update destroy ]
+  before_action :set_prediction, only: %i[ show edit update destroy ]
 
   # GET /predictions or /predictions.json
   def index
@@ -13,7 +13,6 @@ class PredictionsController < ApplicationController
 
   # GET /predictions/1 or /predictions/1.json
   def show
-    @prediction = Prediction.find(params[:id])
     @predictor = @prediction.predictor
     @outcomes = @prediction.outcomes
     @comments = @prediction.comments
@@ -27,7 +26,6 @@ class PredictionsController < ApplicationController
 
   # GET /predictions/1/edit
   def edit
-    @prediction = Prediction.find(params[:id])
   end
 
   # POST /predictions or /predictions.json
@@ -48,7 +46,6 @@ class PredictionsController < ApplicationController
 
   # PATCH/PUT /predictions/1 or /predictions/1.json
   def update
-    @prediction = Prediction.find(params[:id])
     respond_to do |format|
       if @prediction.update(prediction_params)
         format.html { redirect_to prediction_path(@prediction), notice: "Prediction was successfully updated." }
@@ -62,7 +59,6 @@ class PredictionsController < ApplicationController
 
   # DELETE /predictions/1 or /predictions/1.json
   def destroy
-    @prediction = Prediction.find(params[:id])
     @prediction.destroy!
 
     respond_to do |format|
@@ -73,9 +69,9 @@ class PredictionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_prediction
-    #   @prediction = Prediction.find(params[:id])
-    # end
+    def set_prediction
+      @prediction = Prediction.find(params[:id])
+    end
 
     # Only allow a list of trusted parameters through.
     def prediction_params
