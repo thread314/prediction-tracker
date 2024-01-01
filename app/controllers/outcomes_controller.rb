@@ -1,11 +1,6 @@
 class OutcomesController < ApplicationController
   before_action :set_outcome, only: %i[ show edit update destroy ]
 
-  # GET /outcomes or /outcomes.json
-  def index
-    @outcomes = Outcome.all
-  end
-
   # GET /outcomes/1 or /outcomes/1.json
   def show
     @outcome = Outcome.find(params[:id])
@@ -54,9 +49,10 @@ class OutcomesController < ApplicationController
   # DELETE /outcomes/1 or /outcomes/1.json
   def destroy
     @outcome.destroy!
+    @prediction = @outcome.prediction
 
     respond_to do |format|
-      format.html { redirect_to outcomes_url, notice: "Outcome was successfully destroyed." }
+      format.html { redirect_to prediction_path(@prediction), notice: "Outcome was successfully destroyed." }
       format.json { head :no_content }
     end
   end

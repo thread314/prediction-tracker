@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
-  resources :outcomes, only: [:index, :show, :edit, :update, :destroy] do
+  resources :outcomes, only: [:show, :edit, :update, :destroy] do
     resources :comments, only: [:new, :create]
     resources :reports, only: [:new, :create]
   end
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :reports, only: [:index, :show, :edit, :update, :destroy] do
     resources :comments, only: [:new, :create]
   end
+
+  resources :comments, only: [:destroy]
 
 end
 

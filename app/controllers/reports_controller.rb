@@ -15,19 +15,21 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-
     @report = @reportable.reports.build
-
-    if params[:prediction_id]
+    if @report.reportable_type == "Prediction"
       @reason_list = Report.reasons.keys.map { |reason| [reason.titleize, reason] }
-    elsif params[:outcome_id]
+    elsif @report.reportable_type == "Outcome"
       @reason_list = Report.reasons.keys.drop(5).map { |reason| [reason.titleize, reason] }
     end
-
   end
 
   # GET /reports/1/edit
   def edit
+    if @report.reportable_type == "Prediction"
+      @reason_list = Report.reasons.keys.map { |reason| [reason.titleize, reason] }
+    elsif @report.reportable_type == "Outcome"
+      @reason_list = Report.reasons.keys.drop(5).map { |reason| [reason.titleize, reason] }
+    end
   end
 
   # POST /reports or /reports.json
@@ -47,6 +49,13 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
+
+    if params[:prediction_id]
+      @reason_list = Report.reasons.keys.map { |reason| [reason.titleize, reason] }
+    elsif params[:outcome_id]
+      @reason_list = Report.reasons.keys.drop(5).map { |reason| [reason.titleize, reason] }
+    end
+
     respond_to do |format|
       if @report.update(report_params)
         format.html { redirect_to report_url(@report), notice: "Report was successfully updated." }
@@ -69,19 +78,19 @@ class ReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      @report = Report.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_report
+    @report = Report.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def report_params
-      params.require(:report).permit(:reason, :body, :status)
-    end
+  # Only allow a list of trusted parameters through.
+  def report_params
+    params.require(:report).permit(:reason, :body, :status)
+  end
 
-    def set_reportable
-      @reportable = Prediction.find(params[:prediction_id]) if params[:prediction_id]
-      @reportable = Outcome.find(params[:outcome_id]) if params[:outcome_id]
-    end
+  def set_reportable
+    @reportable = Prediction.find(params[:prediction_id]) if params[:prediction_id]
+    @reportable = Outcome.find(params[:outcome_id]) if params[:outcome_id]
+  end
 
 end

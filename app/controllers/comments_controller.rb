@@ -1,23 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[ destroy ]
   before_action :set_commentable
-
-  # GET /comments or /comments.json
-  def index
-    @comments = Comment.all
-  end
-
-  # GET /comments/1 or /comments/1.json
-  def show
-  end
 
   # GET /comments/new
   def new
     @comment = @commentable.comments.build
-  end
-
-  # GET /comments/1/edit
-  def edit
   end
 
   # POST /comments or /comments.json
@@ -42,17 +29,6 @@ class CommentsController < ApplicationController
           format.html { redirect_to report_url(@report), notice: "Comment was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity, notice: "Error saving" }
-      end
-    end
-  end
-
-  # PATCH/PUT /comments/1 or /comments/1.json
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end

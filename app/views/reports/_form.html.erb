@@ -1,30 +1,30 @@
 <%= form_with(model: [@reportable, @report]) do |form| %>
-  <% if report.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+<% if report.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
 
-      <ul>
-        <% report.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% report.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div>
-    <%= form.select :reason, @reason_list, { prompt: 'Select a Reason' } %>
-  </div>
+<div>
+  <%= form.select :reason, @reason_list, { prompt: 'Select a Reason' } %>
+</div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
+<div>
+  <%= form.label :body, style: "display: block" %>
+  <%= form.text_area :body %>
+</div>
 
-  <div>
-    <%= form.hidden_field :status, value: "Pending" %>
-  </div>
+<div>
+  <%= form.hidden_field :status, value: "Pending" %>
+</div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+<div>
+  <%= form.submit %>
+</div>
 <% end %>
