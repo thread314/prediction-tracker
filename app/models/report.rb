@@ -16,5 +16,6 @@ class Report < ApplicationRecord
   
   belongs_to :reportable, polymorphic: true
   has_many :comments, as: :commentable, dependent: :delete_all
+  validates :body, :reason, presence: true
 
 end

@@ -40,6 +40,12 @@ class ReportsController < ApplicationController
       destination = prediction_path(@reportable.prediction)
     end
 
+    if @report.reportable_type == "Prediction"
+      @reason_list = Report.reasons.keys.map { |reason| [reason.titleize, reason] }
+    elsif @report.reportable_type == "Outcome"
+      @reason_list = Report.reasons.keys.drop(5).map { |reason| [reason.titleize, reason] }
+    end
+
     respond_to do |format|
       if @report.save
         format.html { redirect_to destination, notice: "Report was successfully created." }
