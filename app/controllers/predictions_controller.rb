@@ -1,5 +1,6 @@
 class PredictionsController < ApplicationController
   before_action :set_prediction, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /predictions or /predictions.json
   def index

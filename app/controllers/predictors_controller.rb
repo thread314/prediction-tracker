@@ -1,4 +1,5 @@
 class PredictorsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     if params[:query] 
