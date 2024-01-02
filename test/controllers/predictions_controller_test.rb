@@ -3,6 +3,7 @@ require "test_helper"
 class PredictionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @prediction = predictions(:one)
+    @predictor = Predictor.last
   end
 
   test "should get index" do
@@ -11,15 +12,14 @@ class PredictionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_prediction_url
+    get new_predictor_prediction_url(@predictor)
     assert_response :success
   end
 
   test "should create prediction" do
     assert_difference("Prediction.count") do
-      post predictions_url, params: { prediction: {  } }
+      post predictor_predictions_url(@predictor), params: { prediction: {title: "title", body: "body", duedate: "Mon, 01 Jan 2024"} }
     end
-
     assert_redirected_to prediction_url(Prediction.last)
   end
 
@@ -34,7 +34,7 @@ class PredictionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update prediction" do
-    patch prediction_url(@prediction), params: { prediction: {  } }
+    patch prediction_url(@prediction), params: { prediction: {title: "title", body: "body", duedate: "Mon, 01 Jan 2024" } }
     assert_redirected_to prediction_url(@prediction)
   end
 

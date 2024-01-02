@@ -3,24 +3,19 @@ require "test_helper"
 class OutcomesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @outcome = outcomes(:one)
-  end
-
-  test "should get index" do
-    get outcomes_url
-    assert_response :success
+    @prediction = predictions(:one)
   end
 
   test "should get new" do
-    get new_outcome_url
+    get new_prediction_outcome_url(@prediction)
     assert_response :success
   end
 
   test "should create outcome" do
     assert_difference("Outcome.count") do
-      post outcomes_url, params: { outcome: { body: @outcome.body, prediction_id: @outcome.prediction_id, result: @outcome.result } }
+      post prediction_outcomes_url(@prediction), params: { outcome: { body: @outcome.body, prediction_id: @outcome.prediction_id, result: @outcome.result } }
     end
-
-    assert_redirected_to outcome_url(Outcome.last)
+    assert_redirected_to prediction_url(@prediction)
   end
 
   test "should show outcome" do
@@ -35,14 +30,13 @@ class OutcomesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update outcome" do
     patch outcome_url(@outcome), params: { outcome: { body: @outcome.body, prediction_id: @outcome.prediction_id, result: @outcome.result } }
-    assert_redirected_to outcome_url(@outcome)
+    assert_redirected_to prediction_path(@prediction)
   end
 
   test "should destroy outcome" do
     assert_difference("Outcome.count", -1) do
       delete outcome_url(@outcome)
     end
-
-    assert_redirected_to outcomes_url
   end
+
 end

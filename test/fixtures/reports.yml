@@ -4,8 +4,10 @@ one:
   reason: 1
   body: MyText
   status: 1
+  reportable: one (Prediction)
 
 two:
   reason: 1
   body: MyText
   status: 1
+  reportable: two (Prediction)

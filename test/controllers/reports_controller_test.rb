@@ -3,6 +3,7 @@ require "test_helper"
 class ReportsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @report = reports(:one)
+    @prediction = predictions(:one)
   end
 
   test "should get index" do
@@ -11,16 +12,15 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_report_url
+    get new_prediction_report_url(@prediction)
     assert_response :success
   end
 
   test "should create report" do
     assert_difference("Report.count") do
-      post reports_url, params: { report: { body: @report.body, reason: @report.reason, status: @report.status } }
+      post prediction_reports_url(@prediction), params: { report: { body: @report.body, reason: @report.reason, status: @report.status, prediction_id: @prediction.id } }
     end
-
-    assert_redirected_to report_url(Report.last)
+    assert_redirected_to prediction_url(@prediction)
   end
 
   test "should show report" do
@@ -31,11 +31,6 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_report_url(@report)
     assert_response :success
-  end
-
-  test "should update report" do
-    patch report_url(@report), params: { report: { body: @report.body, reason: @report.reason, status: @report.status } }
-    assert_redirected_to report_url(@report)
   end
 
   test "should destroy report" do

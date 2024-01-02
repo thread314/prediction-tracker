@@ -2,6 +2,10 @@
 
 one:
   body: MyText
+  commentable_type: Prediction
+  commentable_id: 1
 
 two:
   body: MyText
+  commentable_type: Report
+  commentable_id: 1
