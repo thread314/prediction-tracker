@@ -1,6 +1,6 @@
 class PredictionsController < ApplicationController
   before_action :set_prediction, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :vote]
 
   # GET /predictions or /predictions.json
   def index
@@ -68,14 +68,23 @@ class PredictionsController < ApplicationController
     end
   end
 
-  def upvote
+  def vote
+    @prediction = Prediction.find(params[:id])
+    @votedirection = params[:commit]
+    @currentvote = current_user.voted_as_when_voted_for @prediction
+
+    if @currentvote == true && @votedirection == "Upvote"
+      @prediction.unliked_by current_user
+    elsif @votedirection == "Upvote"
+      @prediction.liked_by current_user
+    elsif @currentvote == false && @votedirection == "Downvote"
+      @prediction.undisliked_by current_user
+    elsif @votedirection == "Downvote"
+      @prediction.disliked_by current_user
+    end
 
     redirect_back(fallback_location: root_path)
-  end
 
-  def downvote
-
-    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -86,7 +95,7 @@ class PredictionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def prediction_params
-      params.require(:prediction).permit(:title, :body, :duedate)
+      params.require(:prediction).permit(:title, :body, :duedate, :votable_id, :vote)
     end
 
 end

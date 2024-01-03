@@ -17,4 +17,10 @@ Votable body: <%= votable.body %>
 </table>
 
 
+<%= form_with url: prediction_vote_path, method: :post do |form| %>
+<%= form.submit "Upvote" %>
+<% end %>
 
+<%= form_with url: prediction_vote_path, method: :post do |form| %>
+<%= form.submit "Downvote" %>
+<% end %>
