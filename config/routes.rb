@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:destroy]
 
   post '/predictions/:id', to: 'predictions#vote', as: 'prediction_vote'
+  post '/outcomes/:id', to: 'outcomes#vote', as: 'outcome_vote'
 
 end
 

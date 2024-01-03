@@ -1,6 +1,6 @@
 class OutcomesController < ApplicationController
   before_action :set_outcome, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :vote]
 
   # GET /outcomes/1 or /outcomes/1.json
   def show
@@ -57,6 +57,26 @@ class OutcomesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def vote
+    @outcome = Outcome.find(params[:votable_id])
+    @votedirection = params[:vote]
+    @currentvote = current_user.voted_as_when_voted_for @outcome
+
+    if @currentvote == true && @votedirection == "Upvote"
+      @outcome.unliked_by current_user
+    elsif @votedirection == "Upvote"
+      @outcome.liked_by current_user
+    elsif @currentvote == false && @votedirection == "Downvote"
+      @outcome.undisliked_by current_user
+    elsif @votedirection == "Downvote"
+      @outcome.disliked_by current_user
+    end
+
+    redirect_back(fallback_location: root_path)
+
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

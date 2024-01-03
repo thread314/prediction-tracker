@@ -1,26 +1,36 @@
 
-Votable body: <%= votable.body %>
-<table border="1">
+<table>
   <tr>
-    <td style="background-color: palegreen;">
-      &#x25B3;
+    <td>
+      <%= form_with url: destination, method: :post do |form| %>
+      <%= form.hidden_field :vote, value: "Upvote" %>
+      <%= form.hidden_field :votable_id, value: votable.id %>
+      <% if current_user.voted_as_when_voted_for votable %>
+      <%= form.submit "&#x25B3;".html_safe, style: 'background-color: palegreen;' %>
+      <% else %>
+      <%= form.submit "&#x25B3;".html_safe %>
+      <% end %>
+      <% end %>
     </td>
     <td rowspan="2">
       <%= votable.weighted_score %>
     </td>
   </tr>
   <tr>
-    <td style="background-color: lightgrey;">
-      &#x25BD;
+    <td>
+      <%= form_with url: destination, method: :post do |form| %>
+      <%= form.hidden_field :vote, value: "Downvote" %>
+      <%= form.hidden_field :votable_id, value: votable.id %>
+      <% if current_user.voted_as_when_voted_for(votable) == false %>
+      <%= form.submit "&#x25BD;".html_safe, style: 'background-color: pink;' %>
+      <% else %>
+      <%= form.submit "&#x25BD;".html_safe %>
+      <% end %>
+      <% end %>
     </td>
   </tr>
 </table>
 
 
-<%= form_with url: prediction_vote_path, method: :post do |form| %>
-<%= form.submit "Upvote" %>
-<% end %>
 
-<%= form_with url: prediction_vote_path, method: :post do |form| %>
-<%= form.submit "Downvote" %>
-<% end %>
+

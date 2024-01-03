@@ -1,7 +1,7 @@
 
 <div id="<%= dom_id prediction %>">
 
-<%= render template: "layouts/voting", locals: { votable: prediction } %>
+<%= render template: "layouts/voting", locals: { votable: prediction, destination: prediction_vote_path } %>
 
 <strong>Title: </strong><%= prediction.title %>
 <br>

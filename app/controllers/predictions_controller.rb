@@ -69,8 +69,8 @@ class PredictionsController < ApplicationController
   end
 
   def vote
-    @prediction = Prediction.find(params[:id])
-    @votedirection = params[:commit]
+    @prediction = Prediction.find(params[:votable_id])
+    @votedirection = params[:vote]
     @currentvote = current_user.voted_as_when_voted_for @prediction
 
     if @currentvote == true && @votedirection == "Upvote"

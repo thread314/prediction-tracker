@@ -1,5 +1,5 @@
 <div id="<%= dom_id outcome %>">
-  <%= render template: "layouts/voting", locals: { votable: outcome } %>
+  <%= render template: "layouts/voting", locals: { votable: outcome, destination: outcome_vote_path  } %>
   <p>
     <strong>Created at:</strong> <%= outcome.created_at %>
     <br>
