@@ -1,12 +1,11 @@
-<h1>
-  <%= link_to @predictor.title, @predictor.wikiurl %>
-</h1>
-
-<p>
-  <%= if @predictor.image then image_tag(@predictor.image, height:150) end %>
-</p>
-
-<p>
-  <%= if @predictor.summary then @predictor.summary[0,500] + "..." end %>
-</p>
+<div class="title is-3">
+  <%= @predictor.title %>
+</div>
+<div class="block">
+  <%= if @predictor.image then image_tag(@predictor.image, class: "my-image") end %>
+</div>
+<div class="block">
+  <%= if @predictor.summary then @predictor.summary[0,500] end %>
+  <%= link_to "... (view full article on Wikipedia)", @predictor.wikiurl %>
+</div>
 

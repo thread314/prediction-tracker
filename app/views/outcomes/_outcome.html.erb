@@ -1,14 +1,10 @@
-<div id="<%= dom_id outcome %>">
-  <%= render template: "layouts/voting", locals: { votable: outcome, destination: outcome_vote_path  } %>
-  <p>
-    <strong>Created at:</strong> <%= outcome.created_at %>
-    <br>
-    <strong>Result:</strong> <%= outcome.result %>
-    <br>
-    <strong>Body:</strong> <%= outcome.body %>
-    <br>
-    <%= link_to "View Outcome", outcome %>
-    <br>
-  </p>
-</div>
-<hr>
+<div class="block">
+<%= render template: "layouts/voting", locals: { votable: outcome, destination: outcome_vote_path(outcome) } %>
+  <strong>Result:</strong> <%= outcome.result %>
+  <br>
+  <strong>Body:</strong> <%= outcome.body %>
+  <br>
+  <%= link_to "View Outcome", outcome %>
+  <br>
+  <em>Created at: <%= outcome.created_at %></em>
+</div> 

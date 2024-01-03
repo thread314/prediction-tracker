@@ -1,10 +1,11 @@
-<h1>Predictions</h1>
+<div class="section">
 
-<div id="predictions">
-  <% @predictions.each do |prediction| %>
-    <p>
-      <%= link_to prediction.title, prediction %>
-    </p>
-  <% end %>
+  <table class="table">
+    <% @predictions.each do |prediction| %>
+    <tr>
+      <%= render prediction %>
+    </tr>
+    <% end %>
+  </table>
 </div>
 

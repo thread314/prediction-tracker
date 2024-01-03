@@ -1,23 +1,20 @@
 <%= render @outcome %>
 
-<p>
-  <%= link_to 'Lodge a report', new_outcome_report_path(@outcome) %>
-</p>
-<div>
-  <%= link_to "Edit this outcome", edit_outcome_path(@outcome) %> |
-
-  <%= button_to "Destroy this outcome", @outcome, method: :delete %>
+<div class="block">
+  <%= link_to 'Lodge a report', new_outcome_report_path(@outcome) %> | 
+  <%= link_to "Edit this outcome", edit_outcome_path(@outcome) %> | 
+  <%= link_to "Destroy this outcome", @outcome, method: :delete %>
 </div>
 
-<h3>Comments</h3>
+<h3 class="title is-5">Comments</h5>
 
 <% @comments.each do |comment| %>
-<p>
-  <hr>
-  <%= comment.created_at %>
+<div class="block">
   <br>
   <%= comment.body %>
-</p>
+  <br>
+  <em>Created at: <%= comment.created_at %></em>
+</div>
 <% end %>
 
 <%= link_to 'Add New Comment', new_outcome_comment_path(@outcome) %>

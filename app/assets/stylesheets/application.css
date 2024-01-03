@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+.my-image {
+    height: 200px; /* Set your desired height */
+}

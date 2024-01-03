@@ -2,13 +2,7 @@
 <%= render 'show', item: @predictor %>
 
 <%= link_to 'New Prediction', new_predictor_prediction_path(@predictor) %>
-
-<div id="predictions">
-  <% @predictions.each do |prediction| %>
-  <p>
-    <%= link_to prediction.title, prediction %>
-    <hr>
-  </p>
-  <% end %>
-</div>
+<% @predictions.each do |prediction| %>
+<%= render prediction %>
+<% end %>
 

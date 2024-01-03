@@ -1,25 +1,24 @@
 <%= form_with(model: [@prediction, @outcome], local: true) do |form| %>
-  <% if @outcome.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@outcome.errors.count, "error") %> prohibited this outcome from being saved:</h2>
+<% if @outcome.errors.any? %>
+<div class="block" style="color: red">
+  <h2 class="title is-2"><%= pluralize(@outcome.errors.count, "error") %> prohibited this outcome from being saved:</h2>
 
-      <ul>
-        <% @outcome.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @outcome.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div>
-    <%= form.select :result, Outcome.results.keys.map { |result| [result.titleize, result] }, { prompt: 'Select a Result' } %>
-  </div>
+<div class="block">
+  <%= form.select :result, Outcome.results.keys.map { |result| [result.titleize, result] }, { prompt: 'Select a Result' } %>
+</div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  <div>
-    <%= form.submit %>
-  </div>
-  <% end %>
+<div class="block">
+  <%= form.label :body, style: "display: block" %>
+  <%= form.text_area :body %>
+  <%= form.submit %>
+</div>
+<% end %>
 

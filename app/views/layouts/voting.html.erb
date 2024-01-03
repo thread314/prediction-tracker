@@ -1,4 +1,3 @@
-<table>
   <tr>
     <td>
       <%= form_with url: destination, method: :post do |form| %>
@@ -11,7 +10,9 @@
       <% end %>
       <% end %>
     </td>
-    <td rowspan="2">
+  </tr>
+  <tr>
+    <td style="text-align: center;">
       <%= votable.weighted_score %>
     </td>
   </tr>
@@ -28,7 +29,6 @@
       <% end %>
     </td>
   </tr>
-</table>
 
 
 

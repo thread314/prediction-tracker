@@ -1,14 +1,20 @@
 <div class="section">
+  <div class="block">
   <%= link_to 'Create New Predictor', new_predictor_path %>
+  </div>
 
+  <div class="block">
   <%= form_with url: "/predictors", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
   <%= form.text_field :query %>
   <%= form.submit "Search" %>
   <% end %>
+  </div>
 
-<% @predictors.each do |predictor| %>
-  <%= link_to predictor.title, predictor_path(predictor) %><br>
-<% end %>
+  <% @predictors.each do |predictor| %>
+  <div class="block">
+    <%= link_to predictor.title, predictor_path(predictor) %>
+  </div>
+  <% end %>
 </div>
 

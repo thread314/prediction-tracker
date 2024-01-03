@@ -1,34 +1,37 @@
+<div class="section">
+<table class="table">
+<tr>
 <%= render @prediction %>
-
-<div>
-  <%= link_to "Edit this prediction", edit_prediction_path(@prediction) %> |
-  <%= link_to "Back to predictions", predictor_path(@predictor) %>
-  <%= button_to "Destroy this prediction", @prediction, method: :delete %>
+    </tr>
+  </table>
 </div>
 
-<hr>
-<h3>Comments</h3>
+<div class="block">
+  <%= link_to "Edit this prediction", edit_prediction_path(@prediction) %> | 
+  <%= link_to "Back to predictions", predictor_path(@predictor) %> | 
+  <%= link_to "Destroy this prediction", @prediction, method: :delete %>
+</div>
+
+<h5 class="title is-5">Comments</h5>
 
 <% @comments.each do |comment| %>
 <%= render comment %>
 <% end %>
 
+<div class="block">
 <%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
+</div>
 
-<hr>
+<div class="block">
 <%= link_to 'Lodge a report', new_prediction_report_path(@prediction) %>
-<br>
+</div>
 
-<hr>
-<h3>Outcomes</h3>
+<h5 class="title is-5">Outcomes</h5>
 <% @outcomes.each do |outcome| %>
 <%= render outcome %>
 <% end %>
 
+<div class="block">
 <%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>
-
-<h2>
-
-</h2>
-  
+</div>
 

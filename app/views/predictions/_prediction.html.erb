@@ -1,14 +1,9 @@
 
-<div id="<%= dom_id prediction %>">
+<table>
+<%= render template: "layouts/voting", locals: { votable: prediction, destination: prediction_vote_path(prediction) } %>
 
-<%= render template: "layouts/voting", locals: { votable: prediction, destination: prediction_vote_path } %>
+</table>
+<%= link_to prediction.title, prediction_path(prediction) %>
 
-<div class="block">
-  <div class="content"><strong>Title: </strong><%= prediction.title %>
-    <br><strong>Body: </strong><%= prediction.body %>
-    <br><strong>Duedate: </strong><%= prediction.duedate %>
-    <br><strong>Predictor ID: </strong><%= prediction.predictor_id %>
-  </div>
-</div>
+<%= prediction.body %>
 
-</div>
