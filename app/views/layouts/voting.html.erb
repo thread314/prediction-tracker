@@ -1,11 +1,10 @@
-
 <table>
   <tr>
     <td>
       <%= form_with url: destination, method: :post do |form| %>
       <%= form.hidden_field :vote, value: "Upvote" %>
       <%= form.hidden_field :votable_id, value: votable.id %>
-      <% if current_user.voted_as_when_voted_for votable %>
+      <% if user_signed_in? && current_user.voted_as_when_voted_for(votable) then %>
       <%= form.submit "&#x25B3;".html_safe, style: 'background-color: palegreen;' %>
       <% else %>
       <%= form.submit "&#x25B3;".html_safe %>
@@ -21,7 +20,7 @@
       <%= form_with url: destination, method: :post do |form| %>
       <%= form.hidden_field :vote, value: "Downvote" %>
       <%= form.hidden_field :votable_id, value: votable.id %>
-      <% if current_user.voted_as_when_voted_for(votable) == false %>
+      <% if user_signed_in? && current_user.voted_as_when_voted_for(votable) == false then %>
       <%= form.submit "&#x25BD;".html_safe, style: 'background-color: pink;' %>
       <% else %>
       <%= form.submit "&#x25BD;".html_safe %>
