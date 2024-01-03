@@ -25,7 +25,8 @@ class PredictorsController < ApplicationController
       @predictor = Predictor.new wikiurl: wikiurl, 
                                  title: wikientry.title,
                                  image: wikientry.main_image_url,
-                                 summary: wikientry.summary
+                                 summary: wikientry.summary,
+                                 user_id: current_user.id
     end
   end
   
@@ -35,7 +36,8 @@ class PredictorsController < ApplicationController
       @predictor = Predictor.new wikiurl: wikientry.fullurl, 
                                  title: wikientry.title,
                                  image: wikientry.main_image_url,
-                                 summary: wikientry.summary
+                                 summary: wikientry.summary,
+                                 user_id: current_user.id
       @predictor.save
       redirect_to predictor_url(@predictor), notice: "Predictor Created Successfully"
     else

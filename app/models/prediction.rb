@@ -5,4 +5,5 @@ class Prediction < ApplicationRecord
   has_many :outcomes, dependent: :delete_all 
   validates :title, :body, :duedate, presence: true
   acts_as_votable
+  belongs_to :user
 end

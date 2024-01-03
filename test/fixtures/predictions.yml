@@ -4,10 +4,12 @@ one:
   title: MyString
   body: MyText
   duedate: 2023-12-26
-  predictor: predictor_one
+  predictor: one
+  user: one
 
 two:
   title: MyString
   body: MyText
   duedate: 2023-12-26
-  predictor: predictor_two
+  predictor: two
+  user: two

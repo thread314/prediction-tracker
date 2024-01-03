@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-predictor_one:
+one:
   wikiurl: MyString1
   title: MyString
   image: MyString
   summary: MyText
+  user: one
 
-predictor_two:
+two:
   wikiurl: MyString2
   title: MyString
   image: MyString
   summary: MyText
+  user: two

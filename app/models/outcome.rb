@@ -5,4 +5,5 @@ class Outcome < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :delete_all
   validates :body, :result, presence: true
   acts_as_votable
+  belongs_to :user
 end

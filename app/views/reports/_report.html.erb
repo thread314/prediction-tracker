@@ -14,4 +14,8 @@
     <%= report.status %>
   </p>
 
+  <div class="block">
+    <em>Created by <%= User.find(report.user_id).email %> on <%= report.created_at.to_date %></em>
+  </div>
+
 </div>

@@ -4,8 +4,10 @@ one:
   result: 1
   body: MyText
   prediction: one
+  user: one
 
 two:
   result: 1
   body: MyText
   prediction: two
+  user: two

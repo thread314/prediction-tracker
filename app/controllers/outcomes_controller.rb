@@ -21,7 +21,7 @@ class OutcomesController < ApplicationController
   def create
     @prediction = Prediction.find(params[:prediction_id])
     @outcome = @prediction.outcomes.build(outcome_params)
-
+    @outcome.update(user_id: current_user.id)
     respond_to do |format|
       if @outcome.save
         format.html { redirect_to prediction_path(@prediction), notice: "Outcome was successfully created." }

@@ -6,5 +6,5 @@
   <br>
   <%= link_to "View Outcome", outcome %>
   <br>
-  <em>Created at: <%= outcome.created_at %></em>
+  <em>Created by <%= User.find(outcome.user_id).email %> on <%= outcome.created_at.to_date %></em>
 </div> 

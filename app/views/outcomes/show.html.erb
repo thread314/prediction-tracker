@@ -1,6 +1,10 @@
 <%= render @outcome %>
 
 <div class="block">
+<em>Created by <%= User.find(@outcome.user_id).email %> on <%= @outcome.created_at.to_date %></em>
+</div>
+
+<div class="block">
   <%= link_to 'Lodge a report', new_outcome_report_path(@outcome) %> | 
   <%= link_to "Edit this outcome", edit_outcome_path(@outcome) %> | 
   <%= link_to "Destroy this outcome", @outcome, method: :delete %>
@@ -13,7 +17,8 @@
   <br>
   <%= comment.body %>
   <br>
-  <em>Created at: <%= comment.created_at %></em>
+  <em>Created by <%= User.find(comment.user_id).email %> on <%= comment.created_at.to_date %></em>
+
 </div>
 <% end %>
 

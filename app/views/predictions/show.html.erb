@@ -4,6 +4,9 @@
 <%= render @prediction %>
     </tr>
   </table>
+
+<div class="block">
+<em>Created by <%= User.find(@prediction.user_id).email %> on <%= @prediction.created_at.to_date %></em>
 </div>
 
 <div class="block">
@@ -35,3 +38,5 @@
 <%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>
 </div>
 
+
+</div>

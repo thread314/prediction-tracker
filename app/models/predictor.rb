@@ -5,5 +5,6 @@ class Predictor < ApplicationRecord
                   against: :title,
                   using: {tsearch: { prefix: true }}
   has_many :predictions, dependent: :delete_all
+  belongs_to :user
 
 end

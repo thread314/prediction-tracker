@@ -22,7 +22,7 @@ class PredictionsController < ApplicationController
   # GET /predictions/new
   def new
     @predictor = Predictor.find(params[:predictor_id])
-    @prediction = @predictor.predictions.build
+    @prediction = @predictor.predictions.build()
   end
 
   # GET /predictions/1/edit
@@ -33,6 +33,7 @@ class PredictionsController < ApplicationController
   def create
     @predictor = Predictor.find(params[:predictor_id])
     @prediction = @predictor.predictions.build(prediction_params)
+    @prediction.update(user_id: current_user.id)
     respond_to do |format|
       if @prediction.save
         format.html { redirect_to prediction_path(@prediction), notice: "Prediction was successfully created." }

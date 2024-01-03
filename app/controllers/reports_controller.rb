@@ -35,6 +35,7 @@ class ReportsController < ApplicationController
   # POST /reports or /reports.json
   def create
     @report = @reportable.reports.build(report_params)
+    @report.update(user_id: current_user.id)
     if @report.reportable_type == "Prediction"
       destination = prediction_path(@reportable)
     elsif @report.reportable_type == "Outcome"

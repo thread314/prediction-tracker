@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   def create
 
     @comment = @commentable.comments.build(comment_params)
+    @comment.update(user_id: current_user.id)
 
     if params[:prediction_id]
       @prediction = Prediction.find(params[:prediction_id])

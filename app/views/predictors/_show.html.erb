@@ -8,4 +8,6 @@
   <%= if @predictor.summary then @predictor.summary[0,500] end %>
   <%= link_to "... (view full article on Wikipedia)", @predictor.wikiurl %>
 </div>
-
+<div class="block">
+<em>Created by <%= User.find(@predictor.user_id).email %> on <%= @predictor.created_at.to_date %></em>
+</div>

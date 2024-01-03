@@ -6,4 +6,5 @@
 <%= link_to prediction.title, prediction_path(prediction) %>
 
 <%= prediction.body %>
+<em>Created by <%= User.find(prediction.user_id).email %> on <%= prediction.created_at.to_date %></em>
 
