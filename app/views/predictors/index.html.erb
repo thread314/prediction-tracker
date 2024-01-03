@@ -1,20 +1,14 @@
-<h1>Predictors#index</h1>
+<div class="section">
+  <%= link_to 'Create New Predictor', new_predictor_path %>
 
-<p>
-  <%= link_to 'New Predictor', new_predictor_path %>
-</p>
-
-<p>
   <%= form_with url: "/predictors", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
   <%= form.text_field :query %>
   <%= form.submit "Search" %>
   <% end %>
-</p>
 
 <% @predictors.each do |predictor| %>
-<p>
   <%= link_to predictor.title, predictor_path(predictor) %><br>
-</p>
 <% end %>
+</div>
 

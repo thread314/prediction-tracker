@@ -1,11 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @report %>
 
 <div>
   <%= link_to "Edit this report", edit_report_path(@report) %> |
 
-  <%= button_to "Destroy this report", @report, method: :delete %>
+  <%= button_to "Destroy this report", @report, method: :delete, class: "bulma-delete-mixin is-large" %>
+  <div class="block">
+    <button class="bulma-delete-mixin is-large"></button>
+  </div>
+
 </div>
 
 <h3>Comments</h3>

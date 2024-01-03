@@ -3,10 +3,10 @@
 </h1>
 
 <p>
-  <%= image_tag @predictor.image, height:150 if @predictor.image %>
+  <%= if @predictor.image then image_tag(@predictor.image, height:150) end %>
 </p>
 
 <p>
-  <%= @predictor.summary[0,300] + "..." if @predictor.summary %>
+  <%= if @predictor.summary then @predictor.summary[0,500] + "..." end %>
 </p>
 
