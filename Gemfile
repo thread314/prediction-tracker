@@ -73,3 +73,5 @@ gem 'pg_search'
 
 
 gem "devise", "~> 4.9"
+
+gem 'acts_as_votable'

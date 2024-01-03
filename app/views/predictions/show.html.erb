@@ -1,5 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
+
 <%= render @prediction %>
 
 <div>
@@ -12,13 +13,7 @@
 <h3>Comments</h3>
 
 <% @comments.each do |comment| %>
-<p>
-  <%= comment.created_at %>
-  <br>
-  <%= comment.body %>
-  <br>
-  <hr>
-</p>
+<%= render comment %>
 <% end %>
 
 <%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
@@ -30,17 +25,7 @@
 <hr>
 <h3>Outcomes</h3>
 <% @outcomes.each do |outcome| %>
-<p>
-  <%= outcome.created_at %>
-  <br>
-  <%= outcome.result %>
-  <br>
-  <%= outcome.body %>
-  <br>
-  <%= link_to "View Outcome", outcome %>
-  <br>
-  <hr>
-</p>
+<%= render outcome %>
 <% end %>
 
 <%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>

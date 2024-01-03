@@ -1,11 +1,14 @@
 
 <div id="<%= dom_id prediction %>">
-<%= prediction.title %>
+
+<%= render template: "layouts/voting", locals: { votable: prediction } %>
+
+<strong>Title: </strong><%= prediction.title %>
 <br>
-<%= prediction.body %>
+<strong>Body: </strong><%= prediction.body %>
 <br>
-<%= prediction.duedate %>
+<strong>Duedate: </strong><%= prediction.duedate %>
 <br>
-<%= prediction.predictor_id %>
+<strong>Predictor ID: </strong><%= prediction.predictor_id %>
 <br>
 </div>
