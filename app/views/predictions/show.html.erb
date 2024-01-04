@@ -1,9 +1,5 @@
 <div class="section">
-<table class="table">
-<tr>
 <%= render @prediction %>
-    </tr>
-  </table>
 
 <div class="block">
 <em>Created by <%= User.find(@prediction.user_id).email %> on <%= @prediction.created_at.to_date %></em>

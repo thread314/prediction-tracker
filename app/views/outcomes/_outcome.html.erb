@@ -1,5 +1,10 @@
-<div class="block">
+
+<div class="columns">
+
+<div class="column is-1">
 <%= render template: "layouts/voting", locals: { votable: outcome, destination: outcome_vote_path(outcome) } %>
+</div>
+<div class="column">
   <strong>Result:</strong> <%= outcome.result %>
   <br>
   <strong>Body:</strong> <%= outcome.body %>
@@ -7,4 +12,5 @@
   <%= link_to "View Outcome", outcome %>
   <br>
   <em>Created by <%= User.find(outcome.user_id).email %> on <%= outcome.created_at.to_date %></em>
-</div> 
+</div>
+</div>

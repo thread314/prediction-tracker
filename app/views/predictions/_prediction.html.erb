@@ -1,10 +1,16 @@
+<div class="columns">
 
-<table>
+<div class="column is-1">
 <%= render template: "layouts/voting", locals: { votable: prediction, destination: prediction_vote_path(prediction) } %>
+</div>
 
-</table>
-<%= link_to prediction.title, prediction_path(prediction) %>
+<div class="column">
+  <%= link_to prediction.title, prediction_path(prediction) %>
+  <br>
+  <%= prediction.body %>
+  <br>
+  <em>Created by <%= User.find(prediction.user_id).email %> on <%= prediction.created_at.to_date %></em>
+</div>
 
-<%= prediction.body %>
-<em>Created by <%= User.find(prediction.user_id).email %> on <%= prediction.created_at.to_date %></em>
 
+</div>
