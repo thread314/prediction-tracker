@@ -1,26 +1,29 @@
-<%= form_with(model: [@predictor, @prediction] ) do |form| %>
-  <% if @prediction.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@prediction.errors.count, "error") %> prohibited this prediction from being saved:</h2>
-
-      <ul>
-        <% @prediction.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= form.label :title, style: "display: block", class: "label" %>
-  <%= form.text_area :title, class: "input" %>
-  <br>
-  <%= form.label :body, style: "display: block", class: "label" %>
-  <%= form.text_area :body, class: "input" %>
-  <br>
-  <%= form.label :duedate, style: "display: block", class: "label" %>
-  <%= form.date_field :duedate, class: "input" %>
-  <br>
-  <div>
-    <%= form.submit %>
+<% if @prediction.errors.any? %>
+<div class: "content has-text-danger">
+  <div class: "title is-5"><%= pluralize(@prediction.errors.count, "error") %> prohibited this prediction from being saved:
   </div>
+
+  <ul>
+    <% @prediction.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+
+</div>
 <% end %>
+<%= form_with(model: [@predictor, @prediction], class: "form" ) do |form| %>
+<%= form.label :title, style: "display: block", class: "label" %>
+<div class="field">
+  <%= form.text_area :title, class: "input", type: "text" %>
+</div>
+<%= form.label :body, style: "display: block", class: "label" %>
+<div class="field">
+  <%= form.text_area :body, class: "textarea" %>
+</div>
+<%= form.label :duedate, style: "display: block", class: "label" %>
+<div class="field">
+  <%= form.date_field :duedate, class: "input" %>
+</div>
+<%= form.submit class: "button is-link" %>
+<% end %>
+

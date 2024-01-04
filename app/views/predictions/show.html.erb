@@ -1,38 +1,38 @@
 <div class="section">
-<%= render @prediction %>
+  <%= render @prediction %>
 
-<div class="block">
-<em>Created by <%= User.find(@prediction.user_id).email %> on <%= @prediction.created_at.to_date %></em>
-</div>
+  <div class="block">
+    <em>Created by <%= User.find(@prediction.user_id).email %> on <%= @prediction.created_at.to_date %></em>
+  </div>
 
-<div class="block">
-  <%= link_to "Edit this prediction", edit_prediction_path(@prediction) %> | 
-  <%= link_to "Back to predictions", predictor_path(@predictor) %> | 
-  <%= link_to "Destroy this prediction", @prediction, method: :delete %>
-</div>
+  <div class="block">
+    <%= link_to "Edit this prediction", edit_prediction_path(@prediction) %> | 
+    <%= link_to "Back to predictions", predictor_path(@predictor) %> | 
+    <%= link_to "Destroy this prediction", @prediction, method: :delete %>
+  </div>
 
-<h5 class="title is-5">Comments</h5>
+  <h5 class="title is-5">Comments</h5>
 
-<% @comments.each do |comment| %>
-<%= render comment %>
-<% end %>
+  <% @comments.each do |comment| %>
+  <%= render comment %>
+  <% end %>
 
-<div class="block">
-<%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
-</div>
+  <div class="block">
+    <%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
+  </div>
 
-<div class="block">
-<%= link_to 'Lodge a report', new_prediction_report_path(@prediction) %>
-</div>
+  <div class="block">
+    <%= link_to 'Lodge a report', new_prediction_report_path(@prediction) %>
+  </div>
 
-<h5 class="title is-5">Outcomes</h5>
-<% @outcomes.each do |outcome| %>
-<%= render outcome %>
-<% end %>
+  <h5 class="title is-5">Outcomes</h5>
+  <% @outcomes.each do |outcome| %>
+  <%= render outcome %>
+  <% end %>
 
-<div class="block">
-<%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>
-</div>
+  <div class="block">
+    <%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>
+  </div>
 
 
 </div>

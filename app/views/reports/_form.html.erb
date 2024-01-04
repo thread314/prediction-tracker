@@ -11,20 +11,11 @@
 </div>
 <% end %>
 
-<div>
   <%= form.select :reason, @reason_list, { prompt: 'Select a Reason' } %>
-</div>
 
-<div>
   <%= form.label :body, style: "display: block" %>
   <%= form.text_area :body %>
-</div>
-
-<div>
   <%= form.hidden_field :status, value: "Pending" %>
-</div>
 
-<div>
   <%= form.submit %>
-</div>
 <% end %>

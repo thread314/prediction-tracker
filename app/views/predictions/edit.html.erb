@@ -1,8 +1,4 @@
-<%= render "form", prediction: @prediction %>
-
-<br>
-
 <div class="block">
-  <%= link_to "Show this prediction", @prediction %> |
-  <%= link_to "Back to predictions", predictions_path %>
+  <%= render "form", prediction: @prediction %>
+  <%= link_to "Cancel", @prediction, class: "button is-link is-light" %>
 </div>

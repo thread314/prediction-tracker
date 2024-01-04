@@ -1,2 +1,5 @@
-<%= render "form", prediction: @prediction %>
+<div class="block">
+  <%= render "form", prediction: @prediction %>
+  <%= link_to "Cancel", @prediction, class: "button is-link is-light" %>
+</div>
 

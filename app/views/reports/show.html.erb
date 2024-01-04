@@ -1,25 +1,18 @@
 <%= render @report %>
 
-<div>
+<div class="block">
   <%= link_to "Edit this report", edit_report_path(@report) %> |
-
-  <%= button_to "Destroy this report", @report, method: :delete, class: "bulma-delete-mixin is-large" %>
-  <div class="block">
-    <button class="bulma-delete-mixin is-large"></button>
-  </div>
-
+  <%= link_to "Destroy this report", @report, method: :delete, class: "bulma-delete-mixin is-large" %>
 </div>
 
-<h3>Comments</h3>
+<div class="title is-5">Comments:</div>
 
 <% @comments.each do |comment| %>
-<p>
+<div class="block">
   <%= comment.created_at %>
   <br>
   <%= comment.body %>
-  <br>
-  <hr>
-</p>
+</div>
 <% end %>
 
 <%= link_to 'Add New Comment', new_report_comment_path(@report) %>
