@@ -2,15 +2,14 @@
 <div class: "content has-text-danger">
   <div class: "title is-5"><%= pluralize(@prediction.errors.count, "error") %> prohibited this prediction from being saved:
   </div>
-
   <ul>
     <% @prediction.errors.each do |error| %>
     <li><%= error.full_message %></li>
     <% end %>
   </ul>
-
 </div>
 <% end %>
+
 <%= form_with(model: [@predictor, @prediction], class: "form" ) do |form| %>
 <%= form.label :title, style: "display: block", class: "label" %>
 <div class="field">

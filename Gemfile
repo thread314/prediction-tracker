@@ -67,10 +67,9 @@ group :test do
 end
 
 gem 'wikipedia-client'
+gem 'net-http', '~> 0.4.0'
 
 gem 'pg_search'
-
-
 
 gem "devise", "~> 4.9"
 

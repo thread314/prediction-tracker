@@ -139,6 +139,8 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
+    net-http (0.4.0)
+      uri
     net-imap (0.4.8)
       date
       net-protocol
@@ -243,6 +245,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -277,6 +280,7 @@ DEPENDENCIES
   devise (~> 4.9)
   importmap-rails
   jbuilder
+  net-http (~> 0.4.0)
   pg (~> 1.1)
   pg_search
   puma (>= 5.0)

@@ -1,8 +1,7 @@
-<%= form_with(model: [@prediction, @outcome], local: true) do |form| %>
 <% if @outcome.errors.any? %>
-<div class="block" style="color: red">
-  <h2 class="title is-2"><%= pluralize(@outcome.errors.count, "error") %> prohibited this outcome from being saved:</h2>
-
+<div class: "content has-text-danger">
+  <div class="title is-5"><%= pluralize(@outcome.errors.count, "error") %> prohibited this outcome from being saved:
+  </div>
   <ul>
     <% @outcome.errors.each do |error| %>
     <li><%= error.full_message %></li>
@@ -11,14 +10,18 @@
 </div>
 <% end %>
 
-<div class="block">
-  <%= form.select :result, Outcome.results.keys.map { |result| [result.titleize, result] }, { prompt: 'Select a Result' } %>
+<%= form_with(model: [@prediction, @outcome], class: "form" ) do |form| %>
+<%= form.label :title, style: "display: block", class: "label" %>
+<div class="field">
+<div class="select">
+<%= form.select :result, Outcome.results.keys.map { |result| [result.titleize, result] }, { prompt: 'Select a Result' } %>
+</div>
 </div>
 
-<div class="block">
-  <%= form.label :body, style: "display: block" %>
-  <%= form.text_area :body %>
-  <%= form.submit %>
+<%= form.label :body, class: "label" %>
+<div class="field">
+<%= form.text_area :body, class: "textarea" %>
 </div>
+<%= form.submit class: "button is-link" %>
 <% end %>
 
