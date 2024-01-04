@@ -5,9 +5,8 @@
   </div>
 
   <div class="column">
-    <%= link_to prediction.title, prediction_path(prediction) %>
-    <br>
-    <%= prediction.body %>
+    "<%= link_to prediction.title, prediction_path(prediction) %>" by 
+    <%= prediction.duedate %>
     <br>
     <em>Created by <%= User.find(prediction.user_id).email %> on <%= prediction.created_at.to_date %></em>
   </div>

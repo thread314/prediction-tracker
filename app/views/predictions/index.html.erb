@@ -1,6 +1,4 @@
 <div class="section">
-  <% @predictions.each do |prediction| %>
-  <%= render prediction %>
-  <% end %>
+  <%= render partial: "predictionindex", collection: @predictions %>
 </div>
 
