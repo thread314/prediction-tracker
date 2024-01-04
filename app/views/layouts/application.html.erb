@@ -10,6 +10,24 @@
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <script>
+      document.addEventListener("turbo:load", () => {
+	  // Get all "navbar-burger" elements
+	  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+	  // Add a click event on each of them
+	  $navbarBurgers.forEach( el => {
+	      el.addEventListener('click', () => {
+		  // Get the target from the "data-target" attribute
+		  const target = el.dataset.target;
+		  const $target = document.getElementById(target);
+		  // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+		  el.classList.toggle('is-active');
+		  $target.classList.toggle('is-active');
+	      });
+	  });
+      });
+    </script>
   </head>
 
   <body>
@@ -17,14 +35,14 @@
     <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
 	<%= link_to 'Prediction Tracker', root_path, class: "navbar-item is-active" %> 
-	<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="simple-navbar">
+	<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
 	  <span aria-hidden="true"></span>
 	  <span aria-hidden="true"></span>
 	  <span aria-hidden="true"></span>
 	</a>
       </div>
 
-      <div id= "simple-navbar" class="navbar-menu">
+      <div class="navbar-menu" id="navMenu">
 	<div class="navbar-start">
 	  <%= link_to 'Home', root_path, class: "navbar-item" %> 
 	  <%= link_to 'Predictors', predictors_path, class: "navbar-item" %> 
