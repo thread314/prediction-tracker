@@ -1,11 +1,16 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[ show edit update destroy ]
-  before_action :set_reportable, only: %i[ update new create ]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_report, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_reportable, only: [ :new, :create, :edit, :update ]
+  before_action :authenticate_user!
+  before_action :owner_or_admin?, only: [ :show, :edit, :update, :destroy ]
 
   # GET /reports or /reports.json
   def index
-    @reports = Report.all
+    if current_user.admin?
+      @reports = Report.all
+    else
+      @reports = Report.where(user_id: current_user.id)
+    end
   end
 
   # GET /reports/1 or /reports/1.json
@@ -61,7 +66,6 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-
     if @report.reportable_type == "Prediction"
       destination = prediction_path(@reportable)
     elsif @report.reportable_type == "Outcome"
@@ -101,10 +105,19 @@ class ReportsController < ApplicationController
   end
 
   def set_reportable
-    if params[:prediction_id]
+    if @report
+      @reportable = @report.reportable
+    elsif params[:prediction_id]
       @reportable = Prediction.find(params[:prediction_id]) 
     elsif params[:outcome_id]
       @reportable = Outcome.find(params[:outcome_id]) 
+    end
+  end
+
+  def owner_or_admin?
+    unless current_user.admin? || @report.user_id == current_user.id then
+      flash[:alert] = "You are not authorized to view this page."
+      redirect_to root_path 
     end
   end
 

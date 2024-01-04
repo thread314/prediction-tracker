@@ -12,6 +12,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
+    sign_in @user
     get reports_url
     assert_response :success
   end
@@ -31,6 +32,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show report" do
+    sign_in @user
     get report_url(@report)
     assert_response :success
   end

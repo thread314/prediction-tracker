@@ -43,7 +43,6 @@ class PredictorsController < ApplicationController
     else
       redirect_to new_predictor_path, notice: "Predictor Not Found: Incorrect URL"
     end
-
   end
 
 end

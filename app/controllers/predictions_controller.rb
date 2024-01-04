@@ -1,5 +1,5 @@
 class PredictionsController < ApplicationController
-  before_action :set_prediction, only: %i[ show edit update destroy ]
+  before_action :set_prediction, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :vote]
 
   # GET /predictions or /predictions.json
@@ -34,6 +34,7 @@ class PredictionsController < ApplicationController
     @predictor = Predictor.find(params[:predictor_id])
     @prediction = @predictor.predictions.build(prediction_params)
     @prediction.update(user_id: current_user.id)
+    @prediction.liked_by current_user
     respond_to do |format|
       if @prediction.save
         format.html { redirect_to prediction_path(@prediction), notice: "Prediction was successfully created." }

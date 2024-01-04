@@ -1,5 +1,5 @@
 class OutcomesController < ApplicationController
-  before_action :set_outcome, only: %i[ show edit update destroy ]
+  before_action :set_outcome, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :vote]
 
   # GET /outcomes/1 or /outcomes/1.json
@@ -22,6 +22,7 @@ class OutcomesController < ApplicationController
     @prediction = Prediction.find(params[:prediction_id])
     @outcome = @prediction.outcomes.build(outcome_params)
     @outcome.update(user_id: current_user.id)
+    @outcome.liked_by current_user
     respond_to do |format|
       if @outcome.save
         format.html { redirect_to prediction_path(@prediction), notice: "Outcome was successfully created." }
