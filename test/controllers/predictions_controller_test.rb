@@ -7,7 +7,9 @@ class PredictionsControllerTest < ActionDispatch::IntegrationTest
     @prediction = predictions(:one)
     @predictor = Predictor.last
     @user = users(:one)
+    @user2 = users(:one)
     @user.confirm
+    @user2.confirm
   end
 
   test "should get index" do
@@ -51,7 +53,12 @@ class PredictionsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Prediction.count", -1) do
       delete prediction_url(@prediction)
     end
-
     assert_redirected_to predictions_url
   end
+
+  test "should not destroy prediction if not signed in" do
+    delete prediction_path(@prediction)
+    assert_redirected_to new_user_session_path
+  end
+
 end

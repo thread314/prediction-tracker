@@ -1,6 +1,7 @@
 class PredictionsController < ApplicationController
   before_action :set_prediction, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :vote]
+  before_action :owner_or_admin?, only: [ :edit, :update, :destroy ]
 
   # GET /predictions or /predictions.json
   def index
@@ -90,14 +91,21 @@ class PredictionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_prediction
-      @prediction = Prediction.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_prediction
+    @prediction = Prediction.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def prediction_params
-      params.require(:prediction).permit(:title, :body, :duedate, :votable_id, :vote)
+  # Only allow a list of trusted parameters through.
+  def prediction_params
+    params.require(:prediction).permit(:title, :body, :duedate, :votable_id, :vote)
+  end
+
+  def owner_or_admin?
+    unless current_user.admin? || @prediction.user_id == current_user.id then
+      flash[:alert] = "You are not authorized to view this page."
+      redirect_to root_path 
     end
+  end
 
 end
