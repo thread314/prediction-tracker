@@ -5,9 +5,12 @@ class PredictionsController < ApplicationController
 
   # GET /predictions or /predictions.json
   def index
-    if params[:predictor_id]
-      @predictor = Predictor.find(params[:predictor_id])
-      @predictions = @predictor.predictions
+    if params[:query] == "due"
+      @predictions = Prediction.where("duedate < ?", Date.today)
+    elsif params[:query] == "due-no-outcome"
+      @predictions = Prediction.left_outer_joins(:outcomes).where(outcomes: { id: nil }).where("duedate < ?", Date.today)
+    elsif params[:query] == "users"
+      @predictions = current_user.predictions
     else
       @predictions = Prediction.all
     end
@@ -17,7 +20,7 @@ class PredictionsController < ApplicationController
   def show
     @predictor = @prediction.predictor
     @outcomes = @prediction.outcomes
-    @comments = @prediction.comments
+    @comments = @prediction.comments.order(:created_at)
   end
 
   # GET /predictions/new
@@ -72,6 +75,7 @@ class PredictionsController < ApplicationController
   end
 
   def vote
+
     @prediction = Prediction.find(params[:votable_id])
     @votedirection = params[:vote]
     @currentvote = current_user.voted_as_when_voted_for @prediction
@@ -98,7 +102,7 @@ class PredictionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def prediction_params
-    params.require(:prediction).permit(:title, :body, :duedate, :votable_id, :vote)
+    params.require(:prediction).permit(:title, :body, :query, :duedate, :votable_id, :vote)
   end
 
   def owner_or_admin?

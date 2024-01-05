@@ -3,9 +3,9 @@
     <%= render template: "layouts/voting", locals: { votable: predictionindex, destination: prediction_vote_path(predictionindex) } %>
   </div>
   <div class="column">
-    <%= link_to predictionindex.predictor.title, predictor_path(predictionindex.predictor) %> -> 
     "<%= link_to predictionindex.title, prediction_path(predictionindex) %>" by 
-    <%= predictionindex.duedate %>
+    <%= predictionindex.duedate %>. 
+    (<%= link_to predictionindex.predictor.title, predictor_path(predictionindex.predictor) %>)
     <br>
     <em>Created by <%= User.find(predictionindex.user_id).email %> on <%= predictionindex.created_at.to_date %></em>
   </div>

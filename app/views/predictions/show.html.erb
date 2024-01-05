@@ -5,7 +5,7 @@
   <%= render @prediction %>
 
   <div class="block">
-    <%= @prediction.body %>
+    <%= simple_format(@prediction.body) %>
   </div>
 
   <div class="block">
@@ -18,9 +18,15 @@
 
   <h5 class="title is-5">Comments</h5>
 
-  <% @comments.each do |comment| %>
-  <%= render comment %>
-  <% end %>
+  <table class="table">
+    <% @comments.each do |comment| %>
+    <tr>
+      <td>
+	<%= render comment %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 
   <div class="block">
     <%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
@@ -29,7 +35,9 @@
   <div class="block">
   </div>
 
-  <h5 class="title is-5">Outcomes</h5>
+  <% if @prediction.duedate < Date.today %>
+  <div class="title is-5">Outcomes</div>
+
   <% @outcomes.each do |outcome| %>
   <%= render outcome %>
   <% end %>
@@ -37,6 +45,9 @@
   <div class="block">
     <%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>
   </div>
-
+  <% else %>
+  Return after <%= @prediction.duedate.strftime("%B %d, %Y") %> to lodge an outcome.
+  <% end %>    
 
 </div>
+

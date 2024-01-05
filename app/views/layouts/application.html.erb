@@ -45,8 +45,8 @@
       <div class="navbar-menu" id="navMenu">
 	<div class="navbar-start">
 	  <%= link_to 'Home', root_path, class: "navbar-item" %> 
-	  <%= link_to 'Predictors', predictors_path, class: "navbar-item" %> 
 	  <%= link_to 'Predictions', predictions_path, class: "navbar-item" %> 
+	  <%= link_to 'Predictors', predictors_path, class: "navbar-item" %> 
 	  <% if user_signed_in? %> 
 	  <%= link_to 'My Reports', reports_path, class: "navbar-item" %> 
 	  <% end %>
@@ -71,7 +71,7 @@
     <div class="section">
       <%= yield %>
     </div>
-    <% if Rails.env.development? then console end %>
+    <%# if Rails.env.development? then console end %>
 
   </body>
 </html>

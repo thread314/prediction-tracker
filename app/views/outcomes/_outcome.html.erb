@@ -7,7 +7,7 @@
 <div class="column">
   <strong>Result:</strong> <%= outcome.result %>
   <br>
-  <strong>Body:</strong> <%= outcome.body %>
+  <strong>Body:</strong> <%= simple_format(outcome.body) %>
   <br>
   <%= link_to "View Outcome", outcome %>
   <br>

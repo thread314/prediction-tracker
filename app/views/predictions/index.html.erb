@@ -1,3 +1,34 @@
+
+<div class="block">
+
+  <% if params[:query].nil? then %>
+  <%= link_to 'All', predictions_path, class: "button is-primary" %> 
+  <% else %>
+  <%= link_to 'All', predictions_path, class: "button is-light" %> 
+  <% end %>
+
+  <% if params[:query] == "due" %>
+  <%= link_to 'Due', predictions_path(query: "due"), class: "button is-primary" %> 
+  <% else %>
+  <%= link_to 'Due', predictions_path(query: "due"), class: "button is-light" %> 
+  <% end %>
+
+  <% if params[:query] == "due-no-outcome" %>
+  <%= link_to 'Due - no outcome yet', predictions_path(query: "due-no-outcome"), class: "button is-primary" %> 
+  <% else %>
+  <%= link_to 'Due - no outcome yet', predictions_path(query: "due-no-outcome"), class: "button is-light" %> 
+  <% end %>
+
+  <% if user_signed_in? %>
+  <% if params[:query] == "users" %>
+  <%= link_to 'My Predictions', predictions_path(query: "users"), class: "button is-primary" %>
+  <% else %>
+  <%= link_to 'Your Predictions', predictions_path(query: "users"), class: "button is-light" %>
+  <% end %>
+  <% end %>
+
+</div>
+
 <div class="section">
   <%= render partial: "predictionindex", collection: @predictions %>
 </div>
