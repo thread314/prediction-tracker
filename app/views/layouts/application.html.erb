@@ -34,7 +34,7 @@
       }
 
       // Function to restore scroll position after page load
-      document.addEventListener('DOMContentLoaded', (event) => {
+      document.addEventListener('turbo:load', (event) => {
 	  if (sessionStorage.getItem('scrollPosition')) {
               window.scrollTo(0, parseInt(sessionStorage.getItem('scrollPosition')));
               sessionStorage.removeItem('scrollPosition');
