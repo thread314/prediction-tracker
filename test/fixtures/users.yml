@@ -6,5 +6,6 @@
 #
 one: 
     email: "a@e.com"
+    admin: true
 two: 
     email: "b@e.com"

@@ -14,8 +14,12 @@
   <%= form.select :reason, @reason_list, { prompt: 'Select a Reason' } %>
 
   <%= form.label :body, style: "display: block" %>
-  <%= form.text_area :body %>
+  <%= form.text_area :body, class: "textarea" %>
+  <% if current_user.admin? %>
+  <%= form.select :status, Report.statuses.keys, { prompt: 'Select a Status' } %>
+  <% else %>
   <%= form.hidden_field :status, value: "Pending" %>
-
+  <% end %>
+  <br>
   <%= form.submit %>
-<% end %>
+  <% end %>

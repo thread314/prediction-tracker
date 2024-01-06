@@ -8,8 +8,8 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     @report = reports(:one)
     @prediction = predictions(:one)
     @adminuser = users(:one)
-    @nonadminuser = users(:two)
     @adminuser.confirm
+    @nonadminuser = users(:two)
     @nonadminuser.confirm
   end
 

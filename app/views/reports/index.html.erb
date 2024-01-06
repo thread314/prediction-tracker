@@ -1,5 +1,10 @@
 <h1>Reports</h1>
 
+<%= link_to 'All Reports', reports_path() %> |
+<%= link_to 'Pending Reports', reports_path(query: "Pending") %> |
+<%= link_to 'Upheld Reports', reports_path(query: "Upheld") %> |
+<%= link_to 'Dismissed Reports', reports_path(query: "Dismissed") %>
+
 <div id="reports">
   <% @reports.each do |report| %>
     <%= render report %>

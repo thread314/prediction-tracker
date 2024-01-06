@@ -2,14 +2,14 @@ class ReportsController < ApplicationController
   before_action :set_report, only: [ :show, :edit, :update, :destroy ]
   before_action :set_reportable, only: [ :new, :create, :edit, :update ]
   before_action :authenticate_user!
-  before_action :owner_or_admin?, only: [ :show, :edit, :update, :destroy ]
+  before_action :is_admin?, except: [ :new, :create ]
 
   # GET /reports or /reports.json
   def index
-    if current_user.admin?
-      @reports = Report.all
+    if params[:query] 
+      @reports = Report.where(status: params[:query])
     else
-      @reports = Report.where(user_id: current_user.id)
+      @reports = Report.all
     end
   end
 
@@ -114,8 +114,8 @@ class ReportsController < ApplicationController
     end
   end
 
-  def owner_or_admin?
-    unless current_user.admin? || @report.user_id == current_user.id then
+  def is_admin?
+    unless current_user.admin? then
       flash[:alert] = "You are not authorized to view this page."
       redirect_to root_path 
     end
