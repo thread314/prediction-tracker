@@ -91,6 +91,7 @@ class PredictionsController < ApplicationController
     end
 
     redirect_back(fallback_location: root_path)
+    # render partial: 'app/views/layouts/voting.html.erb', locals: { votable: @prediction, destination: prediction_vote_path(@prediction) }
 
   end
 

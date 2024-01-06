@@ -3,9 +3,9 @@
   <%= form.hidden_field :vote, value: "Upvote" %>
   <%= form.hidden_field :votable_id, value: votable.id %>
   <% if user_signed_in? && current_user.voted_as_when_voted_for(votable) then %>
-  <%= form.submit "&#x25B3;".html_safe, style: 'background-color: palegreen;' %>
+  <%= form.submit "&#x25B3;".html_safe, style: 'background-color: palegreen;', onclick: 'saveScrollPositionAndRefresh()' %>
   <% else %>
-  <%= form.submit "&#x25B3;".html_safe %>
+  <%= form.submit "&#x25B3;".html_safe, onclick: 'saveScrollPositionAndRefresh()'  %>
   <% end %>
   <% end %>
 </div>
@@ -17,9 +17,9 @@
   <%= form.hidden_field :vote, value: "Downvote" %>
   <%= form.hidden_field :votable_id, value: votable.id %>
   <% if user_signed_in? && current_user.voted_as_when_voted_for(votable) == false then %>
-  <%= form.submit "&#x25BD;".html_safe, style: 'background-color: pink;' %>
+  <%= form.submit "&#x25BD;".html_safe, style: 'background-color: pink;', onclick: 'saveScrollPositionAndRefresh()'  %>
   <% else %>
-  <%= form.submit "&#x25BD;".html_safe %>
+  <%= form.submit "&#x25BD;".html_safe, onclick: 'saveScrollPositionAndRefresh()' %>
   <% end %>
   <% end %>
 </div>
