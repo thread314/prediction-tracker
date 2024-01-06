@@ -6,14 +6,15 @@ class PredictionsController < ApplicationController
   # GET /predictions or /predictions.json
   def index
     if params[:query] == "due"
-      @predictions = Prediction.where("duedate < ?", Date.today)
+      rawpredictions = Prediction.where("duedate < ?", Date.today)
     elsif params[:query] == "due-no-outcome"
-      @predictions = Prediction.left_outer_joins(:outcomes).where(outcomes: { id: nil }).where("duedate < ?", Date.today)
+      rawpredictions = Prediction.left_outer_joins(:outcomes).where(outcomes: { id: nil }).where("duedate < ?", Date.today)
     elsif params[:query] == "users"
-      @predictions = current_user.predictions
+      rawpredictions = current_user.predictions
     else
-      @predictions = Prediction.all
+      rawpredictions = Prediction.all
     end
+    @predictions = rawpredictions.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /predictions/1 or /predictions/1.json

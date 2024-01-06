@@ -3,10 +3,11 @@ class PredictorsController < ApplicationController
 
   def index
     if params[:query] 
-      @predictors = Predictor.search(params[:query])
+      rawpredictors = Predictor.search(params[:query])
     else
-      @predictors = Predictor.all
+      rawpredictors = Predictor.all
     end
+    @predictors = rawpredictors.paginate(page: params[:page], per_page: 10)
   end
 
   def show

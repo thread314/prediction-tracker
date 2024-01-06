@@ -7,10 +7,11 @@ class ReportsController < ApplicationController
   # GET /reports or /reports.json
   def index
     if params[:query] 
-      @reports = Report.where(status: params[:query])
+      rawreports = Report.where(status: params[:query])
     else
-      @reports = Report.all
+      rawreports = Report.all
     end
+    @reports = rawreports.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /reports/1 or /reports/1.json
