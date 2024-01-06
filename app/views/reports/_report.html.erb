@@ -1,21 +1,8 @@
-<div id="<%= dom_id report %>">
-  <p>
-    <strong>Reason:</strong>
-    <%= report.reason %>
-  </p>
+  <strong>Reason:</strong> <%= report.reason %>
+  <br>
+  <strong>Body:</strong> <%= report.body %>
+  <br>
+  <strong>Status:</strong> <%= report.status %>
+  <br>
+  <em>Created by <%= User.find(report.user_id).email %> on <%= report.created_at.to_date %></em>
 
-  <p>
-    <strong>Body:</strong>
-    <%= report.body %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= report.status %>
-  </p>
-
-  <div class="block">
-    <em>Created by <%= User.find(report.user_id).email %> on <%= report.created_at.to_date %></em>
-  </div>
-
-</div>

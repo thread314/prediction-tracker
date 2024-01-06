@@ -1,6 +1,6 @@
 <div class="block">
-<%= comment.body %>
-<br>
-<em>Created by <%= User.find(comment.user_id).email %> on <%= comment.created_at.to_date %></em>
+  <%= comment.body %>
+  <br>
+  <em>Created by <%= User.find(comment.user_id).email %> on <%= comment.created_at.to_date %></em>
 
 </div>

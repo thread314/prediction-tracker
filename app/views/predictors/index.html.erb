@@ -1,14 +1,14 @@
 <div class="section">
   <div class="block">
-  <%= link_to 'Create New Predictor', new_predictor_path %>
+    <%= link_to 'Create New Predictor', new_predictor_path %>
   </div>
 
   <div class="block">
-  <%= form_with url: "/predictors", method: :get do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
-  <%= form.submit "Search" %>
-  <% end %>
+    <%= form_with url: "/predictors", method: :get do |form| %>
+    <%= form.label :query, "Search for:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+    <% end %>
   </div>
 
   <% @predictors.each do |predictor| %>
@@ -18,4 +18,6 @@
   <% end %>
 </div>
 
-<%= will_paginate @predictors %>
+<div class="digg_pagination">
+  <%= will_paginate @predictors %>
+</div>

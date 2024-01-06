@@ -1,9 +1,4 @@
-<h1>Editing outcome</h1>
-
-<%= render "form", outcome: @outcome %>
-
-<br>
-
-<div>
-  <%= link_to "Show this outcome", @outcome %> |
+<div class="block">
+  <%= render "form", outcome: @outcome %>
+  <%= link_to "Cancel", @outcome, class: "button is-link is-light" %>
 </div>

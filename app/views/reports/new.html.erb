@@ -1,6 +1,4 @@
-<h1>New report</h1>
-
-<%= render "form", report: @report %>
-
-<br>
-
+<div class="block">
+  <%= render "form", report: @report %>
+  <%= link_to "Cancel", @report.reportable, class: "button is-link is-light" %>
+</div>

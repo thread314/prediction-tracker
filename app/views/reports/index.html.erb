@@ -1,18 +1,20 @@
-<h1>Reports</h1>
-
-<%= link_to 'All Reports', reports_path() %> |
-<%= link_to 'Pending Reports', reports_path(query: "Pending") %> |
-<%= link_to 'Upheld Reports', reports_path(query: "Upheld") %> |
-<%= link_to 'Dismissed Reports', reports_path(query: "Dismissed") %>
-
-<div id="reports">
+<div class="section">
+  <%= link_to 'All Reports', reports_path() %> |
+  <%= link_to 'Pending Reports', reports_path(query: "Pending") %> |
+  <%= link_to 'Upheld Reports', reports_path(query: "Upheld") %> |
+  <%= link_to 'Dismissed Reports', reports_path(query: "Dismissed") %>
+  <br>
+  <br>
   <% @reports.each do |report| %>
+  <div class="block">
     <%= render report %>
-    <p>
-      <%= link_to "Show this report", report %>
-    </p>
+    <br>
+    <%= link_to "Show this report", report %>
+  </div>
   <% end %>
 </div>
 
-<%= will_paginate @reports %>
+<div class="digg_pagination">
+  <%= will_paginate @reports %>
+</div>
 

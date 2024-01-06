@@ -33,4 +33,6 @@
   <%= render partial: "predictionindex", collection: @predictions %>
 </div>
 
-<%= will_paginate @posts %>
+<div class="digg_pagination">
+  <%= will_paginate @predictions, :container => false %>
+</div>

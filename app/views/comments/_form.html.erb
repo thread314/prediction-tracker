@@ -1,22 +1,19 @@
-<%= form_with(model: [@commentable, @comment]) do |form| %>
-  <% if comment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+<% if comment.errors.any? %>
+<div class: "content has-text-danger">
+  <div class: "title is-5"><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</div>
 
-      <ul>
-        <% comment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% comment.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+<%= form_with(model: [@commentable, @comment], class: "form") do |form| %>
+<%= form.label :body, style: "display: block", class: "label" %>
+<div class="field">
+  <%= form.text_area :body, class: "textarea" %>
+</div>
+<%= form.submit class: "button is-link" %>
 <% end %>
