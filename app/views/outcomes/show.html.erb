@@ -6,7 +6,7 @@
 
   <div class="block">
     <%= link_to 'Lodge a report', new_outcome_report_path(@outcome) %>
-    <% if user_signed_in? && (@prediction.user.id == current_user.id || current_user.admin?) %>
+    <% if user_signed_in? && (@outcome.user.id == current_user.id || current_user.admin?) %>
     | <%= link_to "Edit this outcome", edit_outcome_path(@outcome) %> | 
     <%= link_to "Destroy this outcome", @outcome, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     <% end %>

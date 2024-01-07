@@ -93,7 +93,7 @@ class OutcomesController < ApplicationController
 
     def owner_or_admin?
       authenticate_user!
-      unless current_user.admin? || @prediction.user_id == current_user.id then
+      unless current_user.admin? || @outcome.user_id == current_user.id then
         flash[:alert] = "You are not authorized to view this page."
         redirect_to root_path 
       end
