@@ -14,6 +14,7 @@ class PredictionsController < ApplicationController
     else
       rawpredictions = Prediction.all
     end
+    rawpredictions = rawpredictions.order(:created_at)
     @predictions = rawpredictions.paginate(page: params[:page], per_page: 10)
   end
 

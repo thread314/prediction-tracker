@@ -11,6 +11,7 @@ class ReportsController < ApplicationController
     else
       rawreports = Report.all
     end
+    rawreports = rawreports.order(:created_at)
     @reports = rawreports.paginate(page: params[:page], per_page: 10)
   end
 

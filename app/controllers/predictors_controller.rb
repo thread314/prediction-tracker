@@ -7,6 +7,7 @@ class PredictorsController < ApplicationController
     else
       rawpredictors = Predictor.all
     end
+    rawpredictors = rawpredictors.order(:title)
     @predictors = rawpredictors.paginate(page: params[:page], per_page: 10)
   end
 

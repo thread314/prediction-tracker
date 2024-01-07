@@ -2,9 +2,8 @@
 <%= render 'show', item: @predictor %>
 
 <div class="block">
-<em>Created by <%= User.find(@predictor.user_id).email %> on <%= @predictor.created_at.to_date %></em>
+  <%= link_to 'New Prediction', new_predictor_prediction_path(@predictor) %>
 </div>
-<%= link_to 'New Prediction', new_predictor_prediction_path(@predictor) %>
 <% @predictions.each do |prediction| %>
 <%= render prediction %>
 <% end %>

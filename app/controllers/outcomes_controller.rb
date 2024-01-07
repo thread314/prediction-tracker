@@ -5,7 +5,7 @@ class OutcomesController < ApplicationController
 
   # GET /outcomes/1 or /outcomes/1.json
   def show
-    @comments = @outcome.comments
+    @comments = @outcome.comments.order(:created_at)
   end
 
   # GET /outcomes/new
