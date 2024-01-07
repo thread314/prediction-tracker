@@ -1,6 +1,6 @@
 class PredictionsController < ApplicationController
   before_action :set_prediction, only: [ :show, :edit, :update, :destroy ]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :vote]
+  before_action :authenticate_user!, only: [:new, :create, :vote ]
   before_action :owner_or_admin?, only: [ :edit, :update, :destroy ]
 
   # GET /predictions or /predictions.json
@@ -108,6 +108,7 @@ class PredictionsController < ApplicationController
   end
 
   def owner_or_admin?
+    authenticate_user!
     unless current_user.admin? || @prediction.user_id == current_user.id then
       flash[:alert] = "You are not authorized to view this page."
       redirect_to root_path 

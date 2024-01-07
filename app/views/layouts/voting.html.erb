@@ -1,5 +1,5 @@
 <div style="text-align: center;" class="">
-  <%= form_with url: destination, method: :post do |form| %>
+  <%= form_with url: destination, data: { turbo_method: :post } do |form| %>
   <%= form.hidden_field :vote, value: "Upvote" %>
   <%= form.hidden_field :votable_id, value: votable.id %>
   <% if user_signed_in? && current_user.voted_as_when_voted_for(votable) then %>
@@ -13,7 +13,7 @@
   <%= votable.weighted_score %>
 </div>
 <div style="text-align: center;" class="">
-  <%= form_with url: destination, method: :post do |form| %>
+  <%= form_with url: destination, data: { turbo_method: :post } do |form| %>
   <%= form.hidden_field :vote, value: "Downvote" %>
   <%= form.hidden_field :votable_id, value: votable.id %>
   <% if user_signed_in? && current_user.voted_as_when_voted_for(votable) == false then %>
