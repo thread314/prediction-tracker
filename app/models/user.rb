@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_many :outcomes
   has_many :reports
   has_many :comments
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
 end
