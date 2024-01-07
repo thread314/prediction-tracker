@@ -21,7 +21,7 @@ class PredictionsController < ApplicationController
   # GET /predictions/1 or /predictions/1.json
   def show
     @predictor = @prediction.predictor
-    @outcomes = @prediction.outcomes
+    @outcomes = @prediction.outcomes.order(cached_weighted_score: :desc)
     @comments = @prediction.comments.order(:created_at)
   end
 
