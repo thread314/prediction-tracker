@@ -7,7 +7,7 @@
     <%= predictionindex.duedate %>. 
     (<%= link_to predictionindex.predictor.title, predictor_path(predictionindex.predictor) %>)
     <br>
-    <em>Created by <%= User.find(predictionindex.user_id).email %> on <%= predictionindex.created_at.to_date %></em>
+    <em>Created by <%= User.find(predictionindex.user_id).username %> on <%= predictionindex.created_at.to_date %></em>
   </div>
 
 </div>

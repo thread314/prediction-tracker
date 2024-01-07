@@ -4,5 +4,5 @@
   <br>
   <strong>Status:</strong> <%= report.status %>
   <br>
-  <em>Created by <%= User.find(report.user_id).email %> on <%= report.created_at.to_date %></em>
+  <em>Created by <%= User.find(report.user_id).username %> on <%= report.created_at.to_date %></em>
 
