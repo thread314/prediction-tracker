@@ -12,7 +12,7 @@
     <%= link_to 'Report this prediction', new_prediction_report_path(@prediction) %>
     <% if user_signed_in? && (@prediction.user.id == current_user.id || current_user.admin?) %>
     | <%= link_to "Edit this prediction", edit_prediction_path(@prediction) %> | 
-    <%= link_to "Destroy this prediction", @prediction, method: :delete %>
+    <%= link_to "Destroy this prediction", @prediction, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     <% end %>
   </div>
 
