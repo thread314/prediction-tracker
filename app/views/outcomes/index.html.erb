@@ -1,0 +1,12 @@
+<div class="section">
+  <% @outcomes.each do |outcome| %>
+  <div class="card">
+    <div class="card-content">
+      <%= link_to outcome.result + ": " + outcome.prediction.title, outcome_path(outcome) %>
+    </div>
+  </div>
+  <% end %>
+  <div class="digg_pagination">
+    <%= will_paginate @outcomes, :container => false  %>
+  </div>
+</div>

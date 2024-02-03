@@ -12,9 +12,9 @@
     <%= link_to "Show this report", report %>
   </div>
   <% end %>
+  <div class="digg_pagination">
+    <%= will_paginate @reports, :container => false %>
+  </div>
 </div>
 
-<div class="digg_pagination">
-  <%= will_paginate @reports, :container => false %>
-</div>
 

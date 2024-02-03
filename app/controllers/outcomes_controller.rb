@@ -3,6 +3,10 @@ class OutcomesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :vote ]
   before_action :owner_or_admin?, only: [ :edit, :update, :destroy ]
 
+  def index
+    @outcomes = Outcome.all.paginate(page: params[:page], per_page: 10)
+  end
+
   # GET /outcomes/1 or /outcomes/1.json
   def show
     @comments = @outcome.comments.order(:created_at)

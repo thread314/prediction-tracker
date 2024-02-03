@@ -1,13 +1,17 @@
-<div class="columns">
-  <div class="column is-1">
-    <%= render template: "layouts/voting", locals: { votable: predictionindex, destination: prediction_vote_path(predictionindex) } %>
-  </div>
-  <div class="column">
-    "<%= link_to predictionindex.title, prediction_path(predictionindex) %>" by 
-    <%= predictionindex.duedate %>. 
-    (<%= link_to predictionindex.predictor.title, predictor_path(predictionindex.predictor) %>)
-    <br>
-    <em>Created by <%= User.find(predictionindex.user_id).username %> on <%= predictionindex.created_at.to_date %></em>
-  </div>
+<div class="card">
+  <div class="card-content">
+    <div class="columns">
+      <div class="column is-1">
+	<%= render template: "layouts/voting", locals: { votable: predictionindex, destination: prediction_vote_path(predictionindex) } %>
+      </div>
+      <div class="column">
+	"<%= link_to predictionindex.title, prediction_path(predictionindex) %>" by 
+	<%= predictionindex.duedate %>. 
+	(<%= link_to predictionindex.predictor.title, predictor_path(predictionindex.predictor) %>)
+	<br>
+	<em>Created by <%= User.find(predictionindex.user_id).username %> on <%= predictionindex.created_at.to_date %></em>
+      </div>
 
+    </div>
+  </div>
 </div>
