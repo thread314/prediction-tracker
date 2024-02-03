@@ -37,9 +37,9 @@ class PredictorsController < ApplicationController
     wikiurl = params[:predictor]['wikiurl']
     wikientry = Wikipedia.find(wikiurl)
     if not wikientry.content then
-      redirect_to new_predictor_path, notice: "Predictor Not Found: Incorrect URL"
+      redirect_to new_predictor_path, alert: "Predictor Not Found: Incorrect URL"
     elsif not iswikiurlhuman?(wikiurl) then
-      redirect_to new_predictor_path, notice: "Wikipedia entry was not a human"
+      redirect_to new_predictor_path, alert: "Wikipedia entry was not a human"
     else
       @predictor = Predictor.new wikiurl: wikientry.fullurl, 
                                  title: wikientry.title,

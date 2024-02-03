@@ -29,7 +29,7 @@
   </table>
 
   <div class="block">
-    <%= link_to 'Add New Comment', new_prediction_comment_path(@prediction) %>
+    <%= link_to 'Add New Comment', new_prediction_comment_path(@prediction), class: "button is-link"  %>
   </div>
 
   <div class="block">
@@ -43,7 +43,7 @@
   <% end %>
 
   <div class="block">
-    <%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction) %>
+    <%= link_to 'Lodge an outcome for this prediction', new_prediction_outcome_path(@prediction), class: "button is-link" %>
   </div>
   <% else %>
   Return after <%= @prediction.duedate.strftime("%B %d, %Y") %> to lodge an outcome.

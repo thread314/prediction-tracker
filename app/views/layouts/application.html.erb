@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PredictionTracker</title>
+    <title>Prediction Tracker: Track predictions, keep experts accountable.</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -46,9 +46,7 @@
 
     <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-	<div class="navbar-item is-active">
-	  <%= 'Prediction Tracker' %> 
-	</div>
+	<%= link_to 'Prediction Tracker', root_path, class: "navbar-item is-active has-text-weight-bold" %> 
 	<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
 	  <span aria-hidden="true"></span>
 	  <span aria-hidden="true"></span>
@@ -59,8 +57,9 @@
       <div class="navbar-menu" id="navMenu">
 	<div class="navbar-start">
 	  <%= link_to 'Home', root_path, class: "navbar-item" %> 
-	  <%= link_to 'Predictions', predictions_path, class: "navbar-item" %> 
+	  <%= link_to 'About', about_path, class: "navbar-item" %> 
 	  <%= link_to 'Predictors', predictors_path, class: "navbar-item" %> 
+	  <%= link_to 'Predictions', predictions_path, class: "navbar-item" %> 
 	  <% if user_signed_in? && current_user.admin? then %> 
 	  <%= link_to 'Show Reports', reports_path, class: "navbar-item" %> 
 	  <% end %>
@@ -74,6 +73,7 @@
 	  <%= link_to("Sign Out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "navbar-item" ) %>
 	  <% else %>
 	  <%= link_to("Sign in", new_user_session_url, class: "navbar-item") %>
+	  <%= link_to("Sign up", new_user_registration_url, class: "navbar-item") %>
 	  <% end %>
 	</div>
       </div>

@@ -1,4 +1,15 @@
 <div class="block">
+  <div class="content is-small">
+    All predictions must: 
+    <ul>
+      <li>Be specific and observable.</li>
+      <li>Have a specific timeframe.</li>
+      <li>Include a link to the direct source of the prediction.</li>
+      <li>Include a quote of the original wording of the prediction (in case the source link is taken down).</li>
+    </ul>
+  </div>
+</div>
+<div class="block">
   <%= render "form", prediction: @prediction %>
   <%= link_to "Cancel", @prediction, class: "button is-link is-light" %>
 </div>

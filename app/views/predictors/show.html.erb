@@ -2,7 +2,7 @@
 <%= render 'show', item: @predictor %>
 
 <div class="block">
-  <%= link_to 'New Prediction', new_predictor_prediction_path(@predictor) %>
+  <%= link_to 'New Prediction', new_predictor_prediction_path(@predictor), class: "button is-link" %>
 </div>
 <% @predictions.each do |prediction| %>
 <%= render prediction %>

@@ -1,13 +1,12 @@
 <div class="section">
   <div class="block">
-    <%= link_to 'Create New Predictor', new_predictor_path %>
+    <%= link_to 'Create New Predictor', new_predictor_path, class: "button is-link" %>
   </div>
 
   <div class="block">
     <%= form_with url: "/predictors", method: :get do |form| %>
-    <%= form.label :query, "Search for:" %>
-    <%= form.text_field :query %>
-    <%= form.submit "Search" %>
+    <%= form.text_field :query, class: "input" %>
+    <%= form.submit "Search", class: "button is-link" %>
     <% end %>
   </div>
 

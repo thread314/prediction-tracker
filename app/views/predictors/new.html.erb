@@ -1,32 +1,33 @@
-<div class="block">
-  Enter the URL for the individual's Wikipedia page below:
-</div>
+<div class="content">
+  <div class="block">
 
-<div class="block">
-  <%= form_with url: "/predictors/new", method: :get do |form| %>
-  <%= form.label :query, "Wikipedia URL: " %>
-  <%= form.text_field :query %>
-  <%= form.submit "Search" %>
+    <p>To ensure predictors are considered 'noteworthy', a person must have their own Wikipedia page before you can record their predictions. </p>
+    <p>Enter the URL for the individual's Wikipedia page below:</p>
+  </div>
+
+  <div class="block">
+    <%= form_with url: "/predictors/new", method: :get do |form| %>
+    <%= form.text_field :query, class: "input" %>
+    <%= form.submit "Submit", class: "button is-link" %>
+    <% end %>
+  </div>
+
+  <% if @predictor && @predictor.summary %>
+
+  <div class="block">
+    <%= render 'show', item: @predictor %>
+    <% end %>
+  </div>
+
+  <div class="block">
+    <% if @predictor && @predictor.persisted? && @predictor.summary %>
+    <%= link_to "Go to " + @predictor.title, predictor_path(@predictor) %>
+    <% elsif @predictor %>
+    <%= form_with model: @predictor do |form| %>
+    <%= form.hidden_field :wikiurl, value: @predictor.wikiurl %>
+    <%= form.submit class: "button is-link" %>
+    <% end %>
+  </div>
+
   <% end %>
 </div>
-
-<% if @predictor && @predictor.summary %>
-
-<div class="block">
-<%= render 'show', item: @predictor %>
-<% end %>
-</div>
-
-<div class="block">
-<% if @predictor && @predictor.persisted? && @predictor.summary %>
-<%= link_to "Go to " + @predictor.title, predictor_path(@predictor) %>
-<% elsif @predictor %>
-<%= form_with model: @predictor do |form| %>
-<%= form.hidden_field :wikiurl, value: @predictor.wikiurl %>
-<%= form.submit %>
-<% end %>
-</div>
-
-<% end %>
-
-
