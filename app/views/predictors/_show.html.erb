@@ -3,10 +3,10 @@
 </div>
 <div class="columns">
 <div class="column is-one-quarter">
-  <%= if @predictor.image then image_tag(@predictor.image, class: "my-image") end %>
+  <%= if @predictor.image then image_tag(@predictor.image, class: "my-image", alt: @predictor.title) end %>
 </div>
 <div class="column">
   <%= if @predictor.summary then @predictor.summary[0,500] end %>
-  <%= link_to "... (view full article on Wikipedia)", @predictor.wikiurl %>
+  <%= link_to "... (view full article on Wikipedia)", @predictor.wikiurl, target: "_blank" %>
 </div>
 </div>

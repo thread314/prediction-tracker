@@ -1,7 +1,6 @@
 <% if report.errors.any? %>
-<div class: "content has-text-danger">
-  <div class: "title is-5"><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</div>
-
+<div class="notification is-warning">
+  <%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:
   <ul>
     <% report.errors.each do |error| %>
     <li><%= error.full_message %></li>

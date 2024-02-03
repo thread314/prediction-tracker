@@ -1,7 +1,6 @@
 <% if comment.errors.any? %>
-<div class: "content has-text-danger">
-  <div class: "title is-5"><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</div>
-
+<div class="notification is-warning">
+  <%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:
   <ul>
     <% comment.errors.each do |error| %>
     <li><%= error.full_message %></li>
