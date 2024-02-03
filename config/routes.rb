@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root "pages#home"
   get '/about', to: 'pages#about'
+  post 'feedback', to: 'pages#submit_feedback'
+  get 'feedback', to: 'pages#feedback'
 
   resources :predictors, only: [:index, :show, :new, :create] do
     resources :predictions, only: [:new, :create]

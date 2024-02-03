@@ -1,0 +1,12 @@
+<%= form_with url: feedback_path, method: :post, local: true do |form| %>
+
+<div>
+  <%= form.label :message %>
+  <%= form.text_area :message, required: true, class: "textarea" %>
+  <%= form.hidden_field :email, value: current_user.username %>
+</div>
+
+<div>
+  <%= form.submit "Submit", class: "button is-link" %>
+</div>
+<% end %>

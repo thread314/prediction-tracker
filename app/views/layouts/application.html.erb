@@ -60,6 +60,9 @@
 	  <%= link_to 'About', about_path, class: "navbar-item" %> 
 	  <%= link_to 'Predictors', predictors_path, class: "navbar-item" %> 
 	  <%= link_to 'Predictions', predictions_path, class: "navbar-item" %> 
+	  <% if user_signed_in? then %> 
+	  <%= link_to 'Feedback', feedback_path, class: "navbar-item" %> 
+	  <% end %>
 	  <% if user_signed_in? && current_user.admin? then %> 
 	  <%= link_to 'Show Reports', reports_path, class: "navbar-item" %> 
 	  <% end %>
