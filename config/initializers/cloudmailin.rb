@@ -1,10 +1,9 @@
 # config/initilizers/cloudmailin.rb
+smtp_url = URI.parse(ENV['CLOUDMAILIN_SMTP_URL'])
 ActionMailer::Base.add_delivery_method :cloudmailin, Mail::SMTP,
-  address: ENV['CLOUDMAILIN_HOST'],
-  port: 587,
-  domain: 'https://salty-sea-96190-e9acf7b934b2.herokuapp.com/',
-  user_name: ENV['CLOUDMAILIN_USERNAME'],
-  password: ENV['CLOUDMAILIN_PASSWORD'],
+  address: smtp_url.host,
+  port: smtp_url.port,
+  user_name: smtp_url.user,
+  password: smtp_url.password,
   authentication: 'plain',
   enable_starttls_auto: true
-
