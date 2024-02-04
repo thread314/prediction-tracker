@@ -1,5 +1,5 @@
 class FeedbackMailer < ApplicationMailer
-  default from: 'e95dad66bb34fc273631@cloudmailin.net'
+  default from: "no-reply@salty-sea-96190-e9acf7b934b2.herokuapp.com"
 
   def feedback_email(username, message)
     @username = username
