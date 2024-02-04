@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "eddie@eddiedrurypbs.com.au"
+  default from: "no-reply@prediction.eddiedrurypbs.com.au"
   layout "mailer"
 end

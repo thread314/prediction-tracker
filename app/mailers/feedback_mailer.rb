@@ -1,5 +1,5 @@
 class FeedbackMailer < ApplicationMailer
-  default from: "eddie@eddiedrurypbs.com.au"
+  default from: "no-reply@prediction.eddiedrurypbs.com.au"
 
   def feedback_email(username, message)
     @username = username
