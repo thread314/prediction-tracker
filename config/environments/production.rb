@@ -98,8 +98,4 @@ Rails.application.configure do
   # Setting up cloudmailin
   config.action_mailer.delivery_method = :cloudmailin
 
-  # Default url for mail
-  config.action_mailer.default_url_options = { host: 'cloudmailin.com' }
-
-
 end
