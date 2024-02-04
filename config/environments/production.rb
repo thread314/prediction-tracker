@@ -97,5 +97,6 @@ Rails.application.configure do
 
   # Setting up cloudmailin
   config.action_mailer.delivery_method = :cloudmailin
+  config.action_mailer.default_url_options = { host: 'salty-sea-96190-e9acf7b934b2.herokuapp.com' }
 
 end
