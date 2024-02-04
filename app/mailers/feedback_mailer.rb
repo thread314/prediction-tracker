@@ -1,5 +1,5 @@
 class FeedbackMailer < ApplicationMailer
-  default from: 'no-reply@example.com'
+  default from: 'e95dad66bb34fc273631@cloudmailin.net'
 
   def feedback_email(username, message)
     @username = username
