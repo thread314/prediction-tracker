@@ -1,3 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,address=no,email=no,date=no">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Responsive Email Template</title>
+<style type="text/css">
+	/*Basics*/
+	html { width:100%;}
+	body {margin:0px!important; padding:0px!important; display:block!important; min-width:100%!important; width:100%!important; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; -webkit-font-smoothing:antialiased;font-family:Roboto, Helvetica Neue, Helvetica, sans-serif!important;}
+	table {border-spacing:0; mso-table-lspace:0pt; mso-table-rspace:0pt;}
+	table td {border-collapse:collapse;}
+	strong {font-weight:bold!important;}
+	td img {-ms-interpolation-mode:bicubic; display:block!important; border:0px!important;}
+	td p {margin:0!important; padding:0!important; display:inline-block!important; font-family:inherit!important;}
+	td a {text-decoration:none!important;}
+	.ii a[href] {text-decoration: none;}
+	/*Outlook*/
+	.ExternalClass {width:100%;}
+	.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:inherit;}
+	.ReadMsgBody {width:100%; background-color:#ffffff;}
+	/* iOS BLUE LINKS */
+	a[x-apple-data-detectors] {color:inherit!important; text-decoration:none!important; font-size:inherit!important; font-family:inherit!important; font-weight:inherit!important; line-height:inherit!important;} 
+	/*Gmail blue links*/
+	u + #body a {color:inherit; text-decoration:none; font-size:inherit; font-family:inherit; font-weight:inherit; line-height:inherit;}
+	/*MailChimp preview text*/
+	.mcnPreviewText {display: none!important;}
+	/*Buttons fix*/
+	.undoreset a, .undoreset a:hover {text-decoration:none!important;}
+	.yshortcuts a {border-bottom:none!important;}
+	.ios-footer a {color:#AAAAAA!important;text-decoration:none;}
+	/*Responsive*/	
+	#template-top-bar {width:800px;}
+	#template-editing-canvas {width:800px;}
+	.bg_rollover:hover {background-color: #00D6D0 !important;}
+	.bg_rollover:hover td a {color:#FEFFFF!important;}
+	.decor a { text-decoration:none!important; color:#343434!important;}
+	.none_1 {display:none;}
+	
+@media only screen and (max-width: 800px) {
+	.width_100 {width: 100%; max-width: 100%;}
+	td.img_Rs img {width:100%!important; max-width:100%!important; margin:auto; height:auto!important; max-height:auto!important;}
+	.dbe {display:block!important; height:auto!important; margin:0 auto!important; width:100%!important;}
+	}
+	
+@media only screen and (max-width: 640px)  {
+	.deviceWidth {width:100%!important; max-width:100%!important; padding:0;}	
+	.w90 {width:90%!important; max-width:90%; margin:0 auto!important; height:auto!important;}
+	.center {text-align:center!important;}
+	td.img_Rs img {width:100%!important; max-width:100%!important; margin:auto; height:auto!important; max-height:auto!important;}
+	.divWidth {display:block!important; width:100%!important; max-width:100%!important;}
+	table.center img, td.center img {float:none!important; margin:0 auto!important;}
+	.db {display:block!important; height:auto!important; margin:0 auto!important; width:100%!important;}
+	.flex {display:flex!important; align-items:center!important; flex-direction:row-reverse!important;}
+	.flex tr {display:flex!important; align-items:left!important; flex-direction:column-reverse!important;}
+	.none {display:none!important;}
+	.none_1 {display:block!important; display:inline-table!important;}
+	.edge {padding:0px 20px;}
+	}
+			
+@media only screen and (max-width: 479px) {
+	.deviceWidth {width:100%!important; max-width:100%!important; padding:0;}	
+	.w90 {width:90%!important; max-width:90%; margin:0 auto!important; height:auto!important;}
+	.center {text-align: center!important;}
+	td.img_Rs img {width:100%!important; max-width:100%!important; margin:auto; height:auto!important; max-height:auto!important;}
+	.divWidth {display:block!important; width:100%!important; max-width:100%!important;}
+	table.center img, td.center img {float:none!important; margin:0 auto!important;}
+	.db {display:block!important; height:auto!important; margin:0 auto!important; width:100%!important;}
+	.flex {display:flex!important; align-items:center!important; flex-direction:row-reverse!important;}
+	.flex tr {display:flex!important; align-items:left!important; flex-direction:column-reverse!important;}
+	.none {display:none!important;}
+	.none_1 {display:block!important; display:inline-table!important;}
+	.edge {padding:0px 15px;}
+	}
+</style>
+<style type="text/css">
+@media (prefers-color-scheme: dark ) {
+  /* Shows Dark Mode-Only Content, Like Images */
+  .dark-img { display:block !important; width: auto !important; overflow: visible !important; float: none !important; max-height:inherit !important; max-width:inherit !important; line-height: auto !important; margin-top:0px !important; visibility:inherit !important; }
+   
+  /* Hides Light Mode-Only Content, Like Images */
+  .light-img { display:none; display:none !important; }
+   
+  /* Custom Dark Mode Background Color */
+  .darkmode { background-color: #F4F4F4 !important; }
+  [data-ogsc] .darkmode { background-color: #F4F4F4 !important; }
+  .darkmode1 { background-color: #F1F0EE !important; }
+  [data-ogsc] .darkmode1 { background-color: #F1F0EE !important; }
+  .darkmode2 { background-color: #A6A6A6 !important; }
+  [data-ogsc] .darkmode2 { background-color: #A6A6A6 !important; }
+  .darkmode3 { background-color: #FFFFFF !important; }
+  [data-ogsc] .darkmode3 { background-color: #FFFFFF !important; }
+      
+  /* Custom Dark Mode Text Link Color */
+  .link { color: #91ADD4 !important; }
+}
+</style>
+
+
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Roboto, Helvetica Neue, Helvetica, sans-serif !important;">
+
+<div style="display: none; max-height: 0px; overflow: hidden;">
+
+</div>
+ 
+<div style="display: none; max-height: 0px; overflow: hidden;">
+&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+</div>
+
+<!--[if mso]>
+<style type="text/css">
+body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
+</style>
+<![endif]-->
+
+<!-- Col_1 -->
+<table width="100%" bgcolor="#F1F1F1" border="0" cellspacing="0" cellpadding="0" align="center" role="presentation">
+  <tr>
+    <td align="center" valign="top">
+    <table width="680" bgcolor="#FEFFFF" border="0" cellspacing="0" cellpadding="0" class="width_100" align="center" role="presentation">
+      <tr>
+        <td bgcolor="#F3F1F4" align="center" valign="top" class="edge">
+        
+        <div style="margin:0 auto">
+        <table width="540" border="0" cellspacing="0" cellpadding="0" class="deviceWidth" align="center" role="presentation">
+          <tr>
+            <td height="25" style="mso-line-height-rule:exactly; line-height:25px; font-size:25px;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" valign="top">
+            <table width="540" border="0" cellspacing="0" cellpadding="0" class="deviceWidth" align="center" role="presentation">
+              <tr>
+                <td align="center" valign="top" style="font-family:Poppins, Roboto, Arial; font-size:28px; color:#4D7ABA; line-height:36px; font-weight:500; padding:5px 0px 0px 0px;"><span style="color:#032231;">Feedback email:</span></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+          <tr>
+            <td height="25" style="mso-line-height-rule:exactly; line-height:25px; font-size:25px;">&nbsp;</td>
+          </tr>
+        </table>
+        </div>
+        
+        </td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" class="edge" style="border-bottom:15px solid #EFEFEF;">
+        
+        <div style="margin:0 auto">
+        <table width="600" border="0" cellspacing="0" cellpadding="0" class="deviceWidth" align="center" role="presentation">
+          <tr>
+            <td height="60" style="mso-line-height-rule:exactly; line-height:60px; font-size:60px;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" valign="top">
+            <table width="480" border="0" cellspacing="0" cellpadding="0" class="deviceWidth" align="center" role="presentation">
+              <tr>
+                <td align="left" valign="top" style="font-family:Poppins, Roboto, Arial; font-size:20px; color:#000000; line-height:30px; font-weight:500; padding:10px 0px 20px 0px;">Hi Smith,</td>
+              </tr>
+              <tr>
+                <td align="left" valign="top" style="font-family:Poppins, Roboto, Arial; font-size:15px; color:#292929; line-height:26px;">You received the following message:</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top" style="padding:35px 0px 40px 0px;">
+                <table bgcolor="#8F4DA5" style="border-radius:6px;" border="0" cellspacing="0" cellpadding="0" align="left" role="presentation">
+                  <tr>
+                    <td align="center" style="font-family:Poppins, Roboto, Arial; color:#FFFFFF; padding:10px 18px;"></td>
+                  </tr>
+                </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" valign="top" style="font-family:Poppins, Roboto, Arial; font-size:15px; color:#292929; line-height:26px;">
 <p>You have received a new message from the feedback form:</p>
 <p><strong>Username:</strong> <%= @username %></p>
 <p><strong>Message:</strong> <%= @message %></p>
+</td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+          <tr>
+            <td height="85" style="mso-line-height-rule:exactly; line-height:85px; font-size:85px;">&nbsp;</td>
+          </tr>
+        </table>
+        </div>
+        
+        </td>
+      </tr>
+      <tr>
+        <td bgcolor="#F3F1F4" align="center" valign="top" class="edge">
+        
+        <div style="margin:0 auto">
+        <table width="600" border="0" cellspacing="0" cellpadding="0" class="deviceWidth" align="center">
+          <tr>
+            <td height="30" style="mso-line-height-rule:exactly; line-height:30px; font-size:30px;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" valign="top">
+            </td>
+          </tr>
+          <tr>
+            <td height="30" style="mso-line-height-rule:exactly; line-height:30px; font-size:30px;">&nbsp;</td>
+          </tr>
+        </table>
+        </div>
+        
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+<!-- End Col_1 -->
+
+</body>
+</html>
